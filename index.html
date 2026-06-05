@@ -47,7 +47,7 @@
                 break-after: page;
                 height: 297mm; /* Altura A4 aproximada */
                 box-sizing: border-box;
-                padding: 2cm 1.8cm;
+                padding: 1.8cm 1.5cm;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
@@ -209,6 +209,29 @@
                     </div>
                 </div>
 
+                <!-- Tarjeta 4: Esquema de Pagos Condicional (REGLA DE NEGOCIO NUEVA) -->
+                <div class="bg-white rounded-2xl border border-brand5/40 p-6 shadow-sm">
+                    <h2 class="text-sm font-bold text-brand3 uppercase tracking-wider mb-4 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-brand1"></span>
+                        4. Esquema de Pagos
+                    </h2>
+                    
+                    <!-- Contenedor para Executive Search (Opciones Fijas) -->
+                    <div id="paymentExecutiveContainer" class="space-y-3">
+                        <label class="block text-xs font-semibold text-brand7/80 mb-1.5">Condición de Pago (Fórmula Executive)</label>
+                        <select id="executivePaymentScheme" class="w-full px-3.5 py-2.5 bg-white border border-brand5 rounded-xl text-sm font-bold text-brand3 focus:outline-none focus:ring-2 focus:ring-brand3/50 transition-all">
+                            <option value="single">1 Sola exhibición (100%)</option>
+                            <option value="split">50% de anticipo y 50% al término de la vacante</option>
+                        </select>
+                    </div>
+
+                    <!-- Contenedor para Leadership (Selector de Números Libre) -->
+                    <div id="paymentLeadershipContainer" class="space-y-3 hidden">
+                        <label class="block text-xs font-semibold text-brand7/80 mb-1.5">Plazo de Pago (Mensualidades del Proyecto)</label>
+                        <input type="number" id="paymentMonths" min="1" max="48" value="1" class="w-full px-3.5 py-2.5 bg-slate-50 border border-brand5 rounded-xl text-sm font-bold text-brand3 focus:outline-none focus:ring-2 focus:ring-brand3/50 text-center transition-all">
+                    </div>
+                </div>
+
             </section>
 
             <!-- COLUMNA DERECHA: DESGLOSE DIGITAL (6 de 12 Cols) -->
@@ -226,6 +249,15 @@
                         <div>
                             <span class="text-xs text-brand5/80 font-bold block">TOTAL PROPUESTA (CON IVA)</span>
                             <div class="text-4xl md:text-5xl font-black text-brand6 tracking-tight mt-1" id="digitalTotal">$0.00</div>
+                        </div>
+                    </div>
+
+                    <!-- Sección dinámica de mensualidades / distribución de pagos en vivo -->
+                    <div id="digitalInstallmentSection" class="mt-4 pt-4 border-t border-white/20 hidden">
+                        <span class="text-[10px] uppercase font-bold text-brand2 tracking-widest block" id="digitalInstallmentLabel">Distribución del Pago</span>
+                        <div class="flex flex-col gap-1 mt-1">
+                            <span class="text-xl font-extrabold text-white" id="digitalMonthlyValue">$0.00</span>
+                            <span class="text-xs text-brand5/90 font-semibold" id="digitalMonthlyLabel">al mes</span>
                         </div>
                     </div>
 
@@ -261,7 +293,7 @@
             <!-- Elemento Decorativo Superior -->
             <div class="flex justify-between items-start">
                 <div class="h-2.5 w-32 bg-brand3 rounded-full"></div>
-                <span class="text-[9px] font-bold text-brand7 uppercase tracking-widest"></span>
+                <span class="text-[9px] font-bold text-brand7 uppercase tracking-widest">OMKARA CONSULTING Group</span>
             </div>
 
             <!-- Centro de la Portada -->
@@ -303,60 +335,107 @@
 
             <!-- Footer Portada -->
             <div class="text-center text-[10px] text-brand7/60 border-t border-slate-100 pt-4 flex justify-between">
-                <span>© OMKARA EMPRESARIAL</span>
-                <span></span>
+                <span>© OMKARA S.A. de C.V.</span>
+                <span>Confidencial & Propietario</span>
             </div>
         </div>
 
-        <!-- PÁGINA 2: DESGLOSE DE COSTOS -->
+        <!-- PÁGINA 2: DESGLOSE DE COSTOS Y ENTREGABLES (METODOLOGÍA INTEGRADA) -->
         <div class="page-break bg-white flex flex-col justify-between" style="height: 100vh;">
-            <div class="space-y-6">
+            <div class="space-y-5">
                 <!-- Header de Sección -->
-                <div class="flex justify-between items-center border-b border-brand5 pb-4">
+                <div class="flex justify-between items-center border-b border-brand5 pb-3">
                     <div class="flex items-center gap-3">
                         <img src="logo_omkara_gris.png" alt="OMKARA" class="h-6 object-contain" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
                         <span class="font-black text-brand3 text-sm hidden">OMKARA</span>
                         <span class="text-xs text-brand7/40">|</span>
-                        <span class="text-xs font-bold text-brand3 uppercase tracking-wide">Propuesta de Costos</span>
+                        <span class="text-xs font-bold text-brand3 uppercase tracking-wide">Propuesta de Costos e Inclusión</span>
                     </div>
                     <span class="text-xs text-brand7/60">Sección 02 / Presupuesto</span>
                 </div>
 
-                <div class="space-y-3">
-                    <h3 class="text-xl font-bold text-brand3 tracking-tight">Presupuesto y Desglose de Inversión</h3>
-                    <p class="text-xs text-brand7/80">A continuación, se presenta la distribución financiera requerida para la ejecución del proyecto de capital humano en base a los requerimientos pactados:</p>
+                <!-- Fila Principal: Desglose e Inversión -->
+                <div class="space-y-2">
+                    <h3 class="text-lg font-bold text-brand3 tracking-tight">Presupuesto y Desglose de Inversión</h3>
                 </div>
 
-                <!-- Tabla de Resultados Impresión (Se inyecta por JS de acuerdo a la Vertical seleccionada) -->
+                <!-- Tabla de Resultados Impresión -->
                 <div id="printTableContainer" class="border border-brand5 rounded-xl overflow-hidden shadow-sm">
                     <!-- Dinámico -->
                 </div>
 
+                <!-- Secciones de valor agregado en base a image_899d0a.png (Entregables / Qué incluye) -->
+                <div id="printInclusionsContainer" class="hidden">
+                    <!-- Tarjeta Metodológica de Liderazgo Estilizada con el chevron y paleta Omkara -->
+                    <div class="border-2 border-brand3 rounded-2xl p-4 bg-white relative shadow-sm overflow-hidden flex flex-col gap-3">
+                        <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-3xl font-black text-brand1 leading-none">1</span>
+                                <h4 class="text-lg font-black text-brand3 tracking-tight uppercase" id="inclusionProgramTitle">LEADERSHIP SNAPSHOT</h4>
+                            </div>
+                            <span class="text-[10px] font-bold text-brand3/70 bg-brand5/20 px-3 py-1 rounded-full uppercase tracking-wider" id="inclusionProgramTagline">Visibilidad inmediata para decisiones críticas</span>
+                        </div>
+                        
+                        <!-- Descripción -->
+                        <p class="text-xs text-brand7 font-medium border-l-4 border-brand1 pl-3 bg-slate-50 py-2 rounded-r-lg" id="inclusionProgramDescription">
+                            Ideal para entender, en poco tiempo, si tu equipo actual tiene la <strong>capacidad real</strong> para ejecutar lo que el negocio exige.
+                        </p>
+
+                        <!-- Dos columnas: Qué incluye & Resultado -->
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                            <!-- Columna Qué incluye -->
+                            <div class="md:col-span-7 space-y-2">
+                                <div class="inline-flex bg-brand3 text-white text-[10px] font-extrabold uppercase tracking-wider px-4 py-1.5 rounded-r-lg shadow-sm">
+                                    Qué incluye:
+                                </div>
+                                <ul class="list-disc list-inside text-[11px] text-brand7/90 space-y-1 font-medium pl-1 leading-relaxed" id="inclusionBulletList">
+                                    <!-- Dinámico -->
+                                </ul>
+                            </div>
+
+                            <!-- Columna Resultado -->
+                            <div class="md:col-span-5 space-y-2 bg-brand2/5 p-3 rounded-xl border border-brand2/20 self-start">
+                                <div class="inline-flex bg-brand2 text-white text-[10px] font-extrabold uppercase tracking-wider px-4 py-1.5 rounded-r-lg shadow-sm">
+                                    Resultado:
+                                </div>
+                                <div class="text-[11px] text-brand7/95 leading-relaxed font-semibold pl-1 pt-1" id="inclusionResultText">
+                                    <!-- Dinámico -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Lista de Nombres para Impresión en Segunda Hoja -->
-                <div id="printParticipantsListContainer" class="hidden space-y-2 mt-4 bg-slate-50 p-4 rounded-xl border border-brand5/40">
-                    <h4 class="text-xs font-bold text-brand3 uppercase tracking-widest">Participantes Registrados en el Programa</h4>
-                    <p class="text-[11px] text-brand7/80" id="printParticipantsString"></p>
+                <div id="printParticipantsListContainer" class="hidden space-y-1.5 bg-slate-50 p-3 rounded-xl border border-brand5/40">
+                    <h4 class="text-[10px] font-bold text-brand3 uppercase tracking-widest">Participantes Registrados en el Programa</h4>
+                    <p class="text-[10px] text-brand7/80" id="printParticipantsString"></p>
                 </div>
             </div>
 
             <!-- Bloque de Totales en Parte Inferior de la Segunda Página -->
-            <div class="grid grid-cols-12 gap-4 border-t border-slate-200 pt-6">
-                <div class="col-span-6 text-[10px] text-brand7/60 self-end leading-relaxed">
+            <div class="grid grid-cols-12 gap-4 border-t border-slate-200 pt-4">
+                <div class="col-span-5 text-[9px] text-brand7/60 self-end leading-relaxed">
                     * Todos los importes expresados están representados en Moneda Nacional (MXN). <br>
                     * Vigencia de la cotización: 30 días naturales a partir de la fecha de emisión.
                 </div>
-                <div class="col-span-6 bg-slate-50 rounded-xl p-4 border border-brand5/30 space-y-1.5">
-                    <div class="flex justify-between text-xs font-semibold text-brand7/80">
+                <div class="col-span-7 bg-slate-50 rounded-xl p-3 border border-brand5/30 space-y-1">
+                    <div class="flex justify-between text-[11px] font-semibold text-brand7/80">
                         <span>Subtotal Neto:</span>
                         <span id="printSubtotalValue">$0.00</span>
                     </div>
-                    <div class="flex justify-between text-xs font-semibold text-brand7/80">
+                    <div class="flex justify-between text-[11px] font-semibold text-brand7/80">
                         <span>I.V.A. Trasladado (16%):</span>
                         <span id="printIvaValue">$0.00</span>
                     </div>
-                    <div class="flex justify-between text-base font-black text-brand3 pt-2 border-t border-slate-200">
+                    <div class="flex justify-between text-sm font-black text-brand3 pt-1 border-t border-slate-200">
                         <span>TOTAL GENERAL:</span>
                         <span id="printTotalValue">$0.00</span>
+                    </div>
+                    <!-- Nueva sección de amortización/condición de pago en impresión -->
+                    <div id="printInstallmentContainer" class="hidden pt-1 mt-1 border-t border-dashed border-brand5/60 flex justify-between items-baseline">
+                        <span class="text-[11px] font-bold text-brand3" id="printInstallmentLabel">3 mensualidades de:</span>
+                        <span class="text-xs font-black text-brand1" id="printInstallmentValue">$0.00 / mes</span>
                     </div>
                 </div>
             </div>
@@ -394,7 +473,7 @@
             <!-- Bloque de Firmas y Datos Corporativos de Omkara -->
             <div class="space-y-8">
                 <div class="flex flex-col items-center justify-center space-y-4">
-                    <span class="text-xs font-bold uppercase tracking-widest text-brand7/60"></span>
+                    <span class="text-xs font-bold uppercase tracking-widest text-brand7/60">Aceptación de la Propuesta</span>
                     
                     <!-- Simulación de firma fluida corporativa SVG -->
                     <div class="w-64 h-24 relative flex items-center justify-center bg-slate-50 rounded-2xl border border-slate-100">
@@ -402,22 +481,22 @@
                             <path d="M20,50 Q40,10 60,40 T100,30 T140,50 T180,20" />
                             <path d="M30,35 Q60,65 120,40 T170,45" />
                         </svg>
-                        <span class="absolute bottom-2 text-[9px] text-brand7/40 tracking-wider"></span>
+                        <span class="absolute bottom-2 text-[9px] text-brand7/40 tracking-wider">Validación Firma Omkara Corporativo</span>
                     </div>
 
                     <!-- Datos y Líneas de Firma -->
                     <div class="text-center space-y-1">
                         <p class="font-extrabold text-sm text-brand3">Dirección General</p>
-                        <p class="text-xs font-semibold text-brand7/70">OMKARA EMPRESARIAL</p>
+                        <p class="text-xs font-semibold text-brand7/70">OMKARA Consultoría Organizacional</p>
                         <div class="text-[10px] text-brand7/50 pt-2">
-                             Guadalajara 
+                            CDMX · Guadalajara · Monterrey
                         </div>
                     </div>
                 </div>
 
                 <!-- Pie de Página Corporativo Tercera Hoja -->
                 <div class="text-center text-[10px] text-brand7/60 border-t border-slate-100 pt-4 flex justify-between">
-                    <span>OMKARA EMPRESARIAL</span>
+                    <span>OMKARA Consulting Group</span>
                     <span>Pág. 3 de 3</span>
                 </div>
             </div>
@@ -427,7 +506,7 @@
 
     <!-- SCRIPT DE INTELIGENCIA DE NEGOCIO Y RENDERIZACIÓN REACTIVA -->
     <script>
-        // Catálogo de Productos y Precios base
+        // Catálogo de Productos, Precios base y entregables específicos de Liderazgo (Metodología de image_899d0a.png)
         const productCatalog = {
             executive: [
                 { id: "tradicional", name: "Tradicional" },
@@ -435,9 +514,74 @@
                 { id: "it", name: "Sectores de Tecnología (IT)" }
             ],
             leadership: [
-                { id: "diagnostic", name: "Leadership Diagnostic", price: 29000 },
-                { id: "high_impact", name: "High Impact Leadership", price: 37000 },
-                { id: "growth_journey", name: "Leadership Growth Journey", price: 75000 }
+                { 
+                    id: "diagnostic", 
+                    name: "Leadership Snapshot", 
+                    price: 29000,
+                    tagline: "Visibilidad inmediata para decisiones críticas",
+                    description: "Ideal para entender, en poco tiempo, si tu equipo actual tiene la <strong>capacidad real</strong> para ejecutar lo que el negocio exige.",
+                    inclusions: [
+                        "Alineación estratégica con Dirección y stakeholders",
+                        "Evaluación de liderazgo (Hogan Insight & Configure)",
+                        "Contraste de competencias vs estrategia de negocio y perfil de puesto",
+                        "Reportes ejecutivos para el evaluado y Dirección General"
+                    ],
+                    result: "Claridad objetiva sobre si cuentas con el <strong>equipo correcto</strong> para el reto actual."
+                },
+                { 
+                    id: "high_impact", 
+                    name: "Leadership Blueprint", 
+                    price: 37000,
+                    tagline: "Mapeo profundo y plan de desarrollo accionable",
+                    description: "Ayuda a estructurar de manera directa el camino de crecimiento de tus líderes clave, traduciendo potencial en un mapa accionable.",
+                    inclusions: [
+                        "Alineación estratégica con Dirección y stakeholders",
+                        "Evaluación de liderazgo (Hogan Insight & Configure)",
+                        "Contraste de competencias vs estrategia de negocio y perfil de puesto",
+                        "Reportes ejecutivos para el evaluado y Dirección General",
+                        "Sesiones de feedback y feedforward de alto nivel",
+                        "Plan de Desarrollo Individual (PDI) alineado a objetivos estratégicos",
+                        "Reportes ejecutivos para Dirección General"
+                    ],
+                    result: "Un plan estratégico <strong>(PDI) estructurado</strong> para acelerar de forma real el talento de tus directivos."
+                },
+                { 
+                    id: "growth_journey", 
+                    name: "Leadership Growth", 
+                    price: 75000,
+                    tagline: "Transformación profunda y sostenida del comportamiento directivo",
+                    description: "Acompañamiento mensual estructurado con metodologías sólidas para lograr cambios reales y medibles en el liderazgo organizacional.",
+                    inclusions: [
+                        "Alineación estratégica con Dirección y stakeholders",
+                        "Evaluación de liderazgo (Hogan Insight & Configure)",
+                        "Contraste de competencias vs estrategia de negocio y perfil de puesto",
+                        "Reportes ejecutivos para el evaluado y Dirección General",
+                        "Sesiones de feedback y feedforward de alto nivel",
+                        "Plan de Desarrollo Individual (PDI) alineado a objetivos estratégicos",
+                        "Reportes ejecutivos para Dirección General",
+                        "Definición de conductas observables alineadas al negocio, traducidas en comportamientos medibles y formalizadas en una Carta Compromiso con cada directivo",
+                        "Evaluación 270° (inicio y cierre). Entrevistas a profundidad y encuestas",
+                        "Acompañamiento mensual con ajustes en tiempo real",
+                        "Matriz de evolución y desempeño (9-box). Entrega de informe final a Dirección General con matriz comparativa de crecimiento y desempeño"
+                    ],
+                    result: "<strong>Evolución de conducta medible</strong>, respaldada con datos objetivos e informe final comparativo."
+                },
+                { 
+                    id: "succession", 
+                    name: "Leadership Succession", 
+                    price: 60000,
+                    tagline: "Aseguramiento del futuro corporativo y gobernanza",
+                    description: "Identificación, mitigación de riesgos operativos y preparación metodológica para posiciones críticas o sucesión corporativa.",
+                    inclusions: [
+                        "Alineación estratégica de la posición crítica con stakeholders",
+                        "Evaluación de liderazgo (Hogan Insight & Configure) de participantes vs perfil requerido",
+                        "Matriz de readiness (Ready Now / Soon / Development)",
+                        "Identificación de riesgos bajo presión y descarriladores",
+                        "Feedback ejecutivo y plan de desarrollo",
+                        "Acompañamiento a los 3 meses, 6 meses y 1 año"
+                    ],
+                    result: "Una <strong>Matriz de Sucesión clara</strong> y planes de desarrollo enfocados a mitigar riesgos de transición."
+                }
             ]
         };
 
@@ -457,11 +601,22 @@
         const qtyParticipantsInput = document.getElementById('qtyParticipants');
         const leadershipPriceField = document.getElementById('leadershipPriceField');
         const participantsNamesContainer = document.getElementById('participantsNamesContainer');
+        
+        // Elementos de pago nuevos
+        const paymentExecutiveContainer = document.getElementById('paymentExecutiveContainer');
+        const paymentLeadershipContainer = document.getElementById('paymentLeadershipContainer');
+        const executivePaymentScheme = document.getElementById('executivePaymentScheme');
+        const paymentMonthsInput = document.getElementById('paymentMonths');
 
+        // Contenedores Digitales
         const digitalSubtotal = document.getElementById('digitalSubtotal');
         const digitalIva = document.getElementById('digitalIva');
         const digitalTotal = document.getElementById('digitalTotal');
         const digitalConceptList = document.getElementById('digitalConceptList');
+        const digitalInstallmentSection = document.getElementById('digitalInstallmentSection');
+        const digitalInstallmentLabel = document.getElementById('digitalInstallmentLabel');
+        const digitalMonthlyValue = document.getElementById('digitalMonthlyValue');
+        const digitalMonthlyLabel = document.getElementById('digitalMonthlyLabel');
 
         // Formateador de moneda MXN
         const mxnFormatter = new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' });
@@ -482,9 +637,18 @@
             if (vertical === 'executive') {
                 sectionExecutive.classList.remove('hidden');
                 sectionLeadership.classList.add('hidden');
+                
+                // Mostrar opciones de pago para Executive
+                paymentExecutiveContainer.classList.remove('hidden');
+                paymentLeadershipContainer.classList.add('hidden');
             } else {
                 sectionExecutive.classList.add('hidden');
                 sectionLeadership.classList.remove('hidden');
+                
+                // Mostrar opciones de pago para Leadership
+                paymentExecutiveContainer.classList.add('hidden');
+                paymentLeadershipContainer.classList.remove('hidden');
+                
                 updateLeadershipPrice();
                 renderParticipantsNames();
             }
@@ -593,7 +757,7 @@
             }
         }
 
-        // CÁLCULO GENERAL DE LA PROPUESTA
+        // CÁLCULO GENERAL DE LA PROPUESTA (CON REGLAS DE ESQUEMA DE PAGO)
         function calculateAll() {
             const vertical = verticalTypeSelect.value;
             let subtotal = 0;
@@ -641,7 +805,7 @@
                 }
             }
 
-            // Cálculos Finales
+            // Cálculos Finales de Impuesto
             const iva = subtotal * 0.16;
             const total = subtotal + iva;
 
@@ -649,6 +813,32 @@
             digitalSubtotal.innerText = mxnFormatter.format(subtotal);
             digitalIva.innerText = mxnFormatter.format(iva);
             digitalTotal.innerText = mxnFormatter.format(total);
+
+            // Regla de Esquema de Pagos para la interfaz interactiva
+            if (vertical === 'executive') {
+                const execScheme = executivePaymentScheme.value;
+                if (execScheme === 'split') {
+                    const half = total / 2;
+                    digitalInstallmentLabel.innerText = "Condición de Pago (50/50)";
+                    digitalMonthlyValue.innerText = `${mxnFormatter.format(half)} de anticipo`;
+                    digitalMonthlyLabel.innerText = `y ${mxnFormatter.format(half)} al término de la vacante`;
+                    digitalInstallmentSection.classList.remove('hidden');
+                } else {
+                    digitalInstallmentSection.classList.add('hidden');
+                }
+            } else {
+                // Leadership: Mensualidades del proyecto
+                const selectedMonths = parseInt(paymentMonthsInput.value) || 1;
+                if (selectedMonths > 1) {
+                    const monthlyTotalVal = total / selectedMonths;
+                    digitalInstallmentLabel.innerText = "Distribución del Pago Directo";
+                    digitalMonthlyValue.innerText = `${mxnFormatter.format(monthlyTotalVal)} / mes`;
+                    digitalMonthlyLabel.innerText = `Financiado a un plazo de ${selectedMonths} meses`;
+                    digitalInstallmentSection.classList.remove('hidden');
+                } else {
+                    digitalInstallmentSection.classList.add('hidden');
+                }
+            }
         }
 
         // PREPARAR E INYECTAR DATOS EN EL MOTOR DE IMPRESIÓN SENSITIVE
@@ -666,12 +856,14 @@
             const productVal = productTypeSelect.value;
             const tableContainer = document.getElementById('printTableContainer');
             const printParticipantsListContainer = document.getElementById('printParticipantsListContainer');
+            const printInclusionsContainer = document.getElementById('printInclusionsContainer');
 
             let subtotal = 0;
 
             if (vertical === 'executive') {
                 document.getElementById('printPropType').innerText = "EXECUTIVE SEARCH / ATRACTOR DE TALENTO";
                 printParticipantsListContainer.classList.add('hidden');
+                printInclusionsContainer.classList.add('hidden');
 
                 // Armar tabla de vacantes para impresión
                 let tableHTML = `
@@ -715,6 +907,41 @@
                 const participantsQty = parseInt(qtyParticipantsInput.value) || 0;
                 subtotal = program ? (program.price * participantsQty) : 0;
 
+                // Carga dinámica de la tarjeta de metodología basada en image_899d0a.png
+                if (program) {
+                    printInclusionsContainer.classList.remove('hidden');
+                    document.getElementById('inclusionProgramTitle').innerText = program.name;
+                    document.getElementById('inclusionProgramTagline').innerText = program.tagline;
+                    document.getElementById('inclusionProgramDescription').innerHTML = program.description;
+                    document.getElementById('inclusionResultText').innerHTML = program.result;
+
+                    // Inyectar bullets dinámicos
+                    const bulletsUl = document.getElementById('inclusionBulletList');
+                    bulletsUl.innerHTML = "";
+                    program.inclusions.forEach(inc => {
+                        const li = document.createElement('li');
+                        li.className = "py-0.5 leading-relaxed";
+                        // Destacar conceptos clave usando negritas
+                        let formattedText = inc
+                            .replace("Alineación estratégica", "<strong>Alineación estratégica</strong>")
+                            .replace("Evaluación de liderazgo", "<strong>Evaluación de liderazgo</strong>")
+                            .replace("Contraste de competencias", "<strong>Contraste de competencias</strong>")
+                            .replace("Reportes ejecutivos", "<strong>Reportes ejecutivos</strong>")
+                            .replace("Sesiones de feedback y feedforward", "<strong>Sesiones de feedback y feedforward</strong>")
+                            .replace("Plan de Desarrollo Individual (PDI)", "<strong>Plan de Desarrollo Individual (PDI)</strong>")
+                            .replace("Definición de conductas observables", "<strong>Definición de conductas observables</strong>")
+                            .replace("Carta Compromiso", "<strong>Carta Compromiso</strong>")
+                            .replace("Evaluación 270°", "<strong>Evaluación 270°</strong>")
+                            .replace("Acompañamiento mensual", "<strong>Acompañamiento mensual</strong>")
+                            .replace("Matriz de readiness", "<strong>Matriz de readiness</strong>")
+                            .replace("Identificación de riesgos", "<strong>Identificación de riesgos</strong>")
+                            .replace("Matriz de evolución y desempeño (9-box)", "<strong>Matriz de evolución (9-box)</strong>");
+                        
+                        li.innerHTML = formattedText;
+                        bulletsUl.appendChild(li);
+                    });
+                }
+
                 // Obtener nombres de participantes de los inputs para mostrarlos en la cotización
                 const nameInputs = document.querySelectorAll('.participant-name-input');
                 let namesArr = [];
@@ -733,18 +960,18 @@
                     <table class="w-full text-left text-xs whitespace-nowrap">
                         <thead>
                             <tr class="bg-brand3 text-white font-extrabold uppercase tracking-wide">
-                                <th class="px-4 py-3">Programa / Servicio</th>
-                                <th class="px-4 py-3 text-right">Inversión Individual</th>
-                                <th class="px-4 py-3 text-center">Participantes</th>
-                                <th class="px-4 py-3 text-right">Subtotal Neto</th>
+                                <th class="px-4 py-2">Programa / Servicio</th>
+                                <th class="px-4 py-2 text-right">Inversión Individual</th>
+                                <th class="px-4 py-2 text-center">Participantes</th>
+                                <th class="px-4 py-2 text-right">Subtotal Neto</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-100 font-medium text-brand7">
                             <tr class="bg-white">
-                                <td class="px-4 py-5 font-bold text-brand3 text-sm">${program ? program.name : ''}</td>
-                                <td class="px-4 py-5 text-right font-semibold">${mxnFormatter.format(program ? program.price : 0)}</td>
-                                <td class="px-4 py-5 text-center font-extrabold">${participantsQty}</td>
-                                <td class="px-4 py-5 text-right font-black text-slate-900 text-sm">${mxnFormatter.format(subtotal)}</td>
+                                <td class="px-4 py-3 font-bold text-brand3 text-sm">${program ? program.name : ''}</td>
+                                <td class="px-4 py-3 text-right font-semibold">${mxnFormatter.format(program ? program.price : 0)}</td>
+                                <td class="px-4 py-3 text-center font-extrabold">${participantsQty}</td>
+                                <td class="px-4 py-3 text-right font-black text-slate-900 text-sm">${mxnFormatter.format(subtotal)}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -759,6 +986,32 @@
             document.getElementById('printSubtotalValue').innerText = mxnFormatter.format(subtotal);
             document.getElementById('printIvaValue').innerText = mxnFormatter.format(iva);
             document.getElementById('printTotalValue').innerText = mxnFormatter.format(total);
+
+            // Inyectar mensualidades / condiciones en la hoja de impresión
+            const printInstallmentContainer = document.getElementById('printInstallmentContainer');
+            if (vertical === 'executive') {
+                const execScheme = executivePaymentScheme.value;
+                if (execScheme === 'split') {
+                    const half = total / 2;
+                    document.getElementById('printInstallmentLabel').innerText = "Condición de Pago:";
+                    document.getElementById('printInstallmentValue').innerText = `50% de anticipo (${mxnFormatter.format(half)}) + 50% al término de la vacante (${mxnFormatter.format(half)})`;
+                    printInstallmentContainer.classList.remove('hidden');
+                } else {
+                    document.getElementById('printInstallmentLabel').innerText = "Condición de Pago:";
+                    document.getElementById('printInstallmentValue').innerText = "1 sola exhibición (100%)";
+                    printInstallmentContainer.classList.remove('hidden');
+                }
+            } else {
+                const selectedMonths = parseInt(paymentMonthsInput.value) || 1;
+                if (selectedMonths > 1) {
+                    const monthlyTotalVal = total / selectedMonths;
+                    document.getElementById('printInstallmentLabel').innerText = `${selectedMonths} pagos mensuales de:`;
+                    document.getElementById('printInstallmentValue').innerText = `${mxnFormatter.format(monthlyTotalVal)} / mes`;
+                    printInstallmentContainer.classList.remove('hidden');
+                } else {
+                    printInstallmentContainer.classList.add('hidden');
+                }
+            }
         }
 
         // Desencadenador de la Impresión Física
@@ -774,6 +1027,9 @@
             renderParticipantsNames();
             calculateAll();
         });
+        paymentMonthsInput.addEventListener('input', calculateAll);
+        paymentMonthsInput.addEventListener('change', calculateAll);
+        executivePaymentScheme.addEventListener('change', calculateAll);
 
         // Inicialización del simulador al arranque
         window.onload = function() {
