@@ -24,17 +24,17 @@
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&display=swap');
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
         
-        /* Estilos específicos para Impresión Comercial de 3 Páginas */
+        /* Estilos específicos para Impresión Comercial de 3 y 4 Páginas */
         @media print {
             body {
                 background: #ffffff !important;
                 color: #000000 !important;
-                font-size: 11pt;
+                font-size: 10pt;
             }
             .no-print {
                 display: none !important;
@@ -146,6 +146,53 @@
                             </select>
                         </div>
                     </div>
+
+                    <!-- Campos Extras para Executive Search EE.UU. / Contratos formales -->
+                    <div id="executiveExtraFields" class="hidden pt-4 border-t border-slate-100 space-y-4">
+                        <h3 class="text-xs font-bold text-brand3 uppercase tracking-wider">Detalles Adicionales del Contrato (Engagement Letter)</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-brand7/80 mb-1.5">Ciudad, Estado (Cliente)</label>
+                                <input type="text" id="clientLocation" value="Dallas, TX" class="w-full px-3.5 py-2 bg-slate-50 border border-brand5 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-brand3/50 focus:bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-brand7/80 mb-1.5">País (Cliente)</label>
+                                <input type="text" id="clientCountry" value="The United States of America" class="w-full px-3.5 py-2 bg-slate-50 border border-brand5 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-brand3/50 focus:bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-brand7/80 mb-1.5">Email del Cliente</label>
+                                <input type="email" id="clientEmail" value="erik@crestcommercial.com" class="w-full px-3.5 py-2 bg-slate-50 border border-brand5 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-brand3/50 focus:bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-brand7/80 mb-1.5">Direct Hiring Manager</label>
+                                <input type="text" id="hiringManager" value="Erik / Margaret Fulkerson" class="w-full px-3.5 py-2 bg-slate-50 border border-brand5 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-brand3/50 focus:bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-brand7/80 mb-1.5">Departamento / Función</label>
+                                <input type="text" id="department" value="Accounting" class="w-full px-3.5 py-2 bg-slate-50 border border-brand5 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-brand3/50 focus:bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-brand7/80 mb-1.5">Ubicación del Puesto (Role Location)</label>
+                                <input type="text" id="roleLocation" value="Dallas, TX" class="w-full px-3.5 py-2 bg-slate-50 border border-brand5 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-brand3/50 focus:bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-brand7/80 mb-1.5">Fecha de Inicio Estimada</label>
+                                <input type="text" id="targetStartDate" value="ASAP" class="w-full px-3.5 py-2 bg-slate-50 border border-brand5 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-brand3/50 focus:bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-brand7/80 mb-1.5">Fecha de Kick-off Propuesta</label>
+                                <input type="text" id="kickoffDate" value="April 20th 4:00 CTS" class="w-full px-3.5 py-2 bg-slate-50 border border-brand5 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-brand3/50 focus:bg-white">
+                            </div>
+                            <!-- Nuevo Campo: Partner Rate para Executive Search en Inglés -->
+                            <div>
+                                <label class="block text-xs font-semibold text-brand3 mb-1.5">Partner Rate (%)</label>
+                                <div class="relative">
+                                    <input type="number" id="partnerRateInput" value="15" min="0" max="100" step="0.1" class="w-full px-3.5 py-2 bg-slate-50 border border-brand5 rounded-xl text-xs font-bold text-brand3 text-center pr-8 focus:outline-none focus:ring-2 focus:ring-brand3/50 focus:bg-white transition-all">
+                                    <span class="absolute right-3 top-2 text-xs font-bold text-brand7/50">%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Tarjeta 2: Selección de Vertical y Producto -->
@@ -163,6 +210,7 @@
                                 <option value="executive">Executive Search</option>
                                 <option value="leadership">Leadership and Assessments</option>
                                 <option value="talent_up">Talent Up</option>
+                                <option value="people_up_study">People Up Study</option>
                             </select>
                         </div>
                         <!-- Selector de Producto -->
@@ -242,6 +290,30 @@
                                 <span class="absolute left-3.5 top-2.5 text-xs text-brand7/60 font-bold">$</span>
                                 <input type="number" id="talentUpValue" value="150000" class="w-full pl-7 pr-3 py-2.5 bg-slate-50 border border-brand5 rounded-xl text-sm font-bold text-brand3 focus:outline-none focus:ring-2 focus:ring-brand3/50 text-center">
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- Formulario de People Up Study (Cantidad de colaboradores) -->
+                    <div id="sectionPeopleUp" class="space-y-4 hidden">
+                        <div class="border-b border-slate-100 pb-3 mb-2">
+                            <h2 class="text-sm font-bold text-brand3 uppercase tracking-wider flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-brand1"></span>
+                                3. Rango de Colaboradores
+                            </h2>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-brand7/80 mb-1.5">Cantidad de Colaboradores</label>
+                            <select id="peopleUpRange" onchange="calculateAll()" class="w-full px-3.5 py-2.5 bg-white border border-brand5 rounded-xl text-sm font-bold text-brand3 focus:outline-none focus:ring-2 focus:ring-brand3/50 transition-all">
+                                <option value="25" data-price="25000">1 - 25 colaboradores ($25,000.00)</option>
+                                <option value="50" data-price="37500" selected>26 - 50 colaboradores ($37,500.00)</option>
+                                <option value="100" data-price="52500">51 - 100 colaboradores ($52,500.00)</option>
+                                <option value="200" data-price="67500">101 - 200 colaboradores ($67,500.00)</option>
+                                <option value="350" data-price="82500">201 - 350 colaboradores ($82,500.00)</option>
+                                <option value="500" data-price="97500">351 - 500 colaboradores ($97,500.00)</option>
+                                <option value="750" data-price="117000">501 - 750 colaboradores ($117,000.00)</option>
+                                <option value="1000" data-price="142500">751 - 1000 colaboradores ($142,500.00)</option>
+                                <option value="2000" data-price="180000">1001 - 2000 colaboradores ($180,000.00)</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -339,20 +411,17 @@
         </main>
     </div>
 
-    <!-- AREA EXCLUSIVA DE IMPRESIÓN (3 PÁGINAS EXACTAS) -->
-    <div id="print-area" class="hidden print-area bg-white">
+    <!-- AREA DE IMPRESIÓN 1: PROPUESTA OMKARA ESTÁNDAR (ESPAÑOL O MULTI-PRODUCTO) -->
+    <div id="print-area-standard" class="hidden print-area bg-white">
         
         <!-- PÁGINA 1: PORTADA CON LOGOTIPO OFICIAL -->
         <div class="page-break bg-white flex flex-col justify-between" style="height: 100vh;">
-            <!-- Elemento Decorativo Superior -->
             <div class="flex justify-between items-start">
                 <div class="h-2.5 w-32 bg-brand3 rounded-full"></div>
                 <span class="text-[9px] font-bold text-brand7 uppercase tracking-widest">OMKARA Empresarial</span>
             </div>
 
-            <!-- Centro de la Portada -->
             <div class="my-auto space-y-12">
-                <!-- Logotipo Oficial Omkara centrado -->
                 <div class="flex flex-col items-center justify-center text-center space-y-6">
                     <div class="max-w-sm mx-auto p-4 bg-white rounded-2xl">
                         <img src="logo_negro.png" alt="Logotipo Principal OMKARA" class="max-h-36 mx-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
@@ -363,14 +432,12 @@
                     </div>
                 </div>
 
-                <!-- Título Comercial de la Propuesta -->
                 <div class="text-center space-y-3 max-w-2xl mx-auto">
                     <span class="text-xs font-black tracking-widest uppercase text-brand1" id="printPropHeaderSubtitle">Propuesta Comercial de Servicios</span>
-                    <h2 class="text-3xl font-extrabold text-brand3 tracking-tight" id="printPropType">EXECUTIVE SEARCH / ATRACTOR DE TALENTO</h2>
+                    <h2 class="text-3xl font-extrabold text-brand3 tracking-tight" id="printPropType"></h2>
                     <div class="w-16 h-1 bg-brand1 mx-auto rounded-full mt-4"></div>
                 </div>
 
-                <!-- Detalles del Cliente de Portada -->
                 <div class="bg-slate-50/80 rounded-2xl p-6 border border-brand5/30 max-w-lg mx-auto grid grid-cols-2 gap-4 text-sm text-brand7">
                     <div>
                         <span class="text-[10px] uppercase font-bold text-brand3 tracking-wider block" id="lblPrepFor">PREPARADO PARA:</span>
@@ -382,46 +449,40 @@
                     </div>
                     <div class="col-span-2 pt-3 border-t border-slate-200 flex justify-between text-xs">
                         <span id="lblEmission">Emisión: <strong id="printDate">...</strong></span>
-                        <span id="lblStatus">Estatus: <strong class="text-brand3">Propuesta Inicial</strong></span>
+                        <span id="lblStatus">"" <strong class="text-brand3">""</strong></span>
                     </div>
                 </div>
             </div>
 
-            <!-- Footer Portada -->
             <div class="text-center text-[10px] text-brand7/60 border-t border-slate-100 pt-4 flex justify-between">
                 <span id="lblCopyright">© OMKARA S.C</span>
-                <span id="lblConfidential">Confidencial & Propietario</span>
+                <span id="lblConfidential">Confidencial</span>
             </div>
         </div>
 
         <!-- PÁGINA 2: DESGLOSE DE COSTOS Y ENTREGABLES -->
         <div class="page-break bg-white flex flex-col justify-between" style="height: 100vh;">
             <div class="space-y-5">
-                <!-- Header de Sección -->
                 <div class="flex justify-between items-center border-b border-brand5 pb-3">
                     <div class="flex items-center gap-3">
                         <img src="logo_omkara_gris.png" alt="OMKARA" class="h-6 object-contain" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
                         <span class="font-black text-brand3 text-sm hidden">OMKARA</span>
                         <span class="text-xs text-brand7/40">|</span>
-                        <span class="text-xs font-bold text-brand3 uppercase tracking-wide" id="printCostsTitleHeader">Propuesta de Costos e Inclusión</span>
+                        <span class="text-xs font-bold text-brand3 uppercase tracking-wide" id="printCostsTitleHeader">Propuesta económica</span>
                     </div>
                     <span class="text-xs text-brand7/60" id="printCostsSectionLabel">Sección 02 / Presupuesto</span>
                 </div>
 
-                <!-- Fila Principal: Desglose e Inversión -->
                 <div class="space-y-2">
                     <h3 class="text-lg font-bold text-brand3 tracking-tight" id="printCostsMainTitle">Presupuesto y Desglose de Inversión</h3>
-                    <p class="text-xs text-brand7/80" id="printCostsMainDesc">A continuación, se presenta la distribución financiera requerida para la ejecución del proyecto de capital humano en base a los requerimientos pactados:</p>
+                    <p class="text-xs text-brand7/80" id="printCostsMainDesc">La siguiente propuesta muestra la inversión estimada del proyecto:</p>
                 </div>
 
-                <!-- Tabla de Resultados Impresión -->
                 <div id="printTableContainer" class="border border-brand5 rounded-xl overflow-hidden shadow-sm">
                     <!-- Dinámico -->
                 </div>
 
-                <!-- Secciones de entregables (Qué incluye) -->
                 <div id="printInclusionsContainer" class="hidden">
-                    <!-- Tarjeta Metodológica Estilizada con el chevron y paleta Omkara -->
                     <div class="border-2 border-brand3 rounded-2xl p-4 bg-white relative shadow-sm overflow-hidden flex flex-col gap-3">
                         <div class="flex items-center justify-between border-b border-slate-100 pb-2">
                             <div class="flex items-baseline gap-2">
@@ -431,14 +492,11 @@
                             <span class="text-[10px] font-bold text-brand3/70 bg-brand5/20 px-3 py-1 rounded-full uppercase tracking-wider" id="inclusionProgramTagline">Visibilidad inmediata para decisiones críticas</span>
                         </div>
                         
-                        <!-- Descripción -->
                         <p class="text-xs text-brand7 font-medium border-l-4 border-brand1 pl-3 bg-slate-50 py-2 rounded-r-lg" id="inclusionProgramDescription">
                             Ideal para entender, en poco tiempo, si tu equipo actual tiene la <strong>capacidad real</strong> para ejecutar lo que el negocio exige.
                         </p>
 
-                        <!-- Dos columnas: Qué incluye & Resultado -->
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
-                            <!-- Columna Qué incluye -->
                             <div class="md:col-span-7 space-y-2">
                                 <div class="inline-flex bg-brand3 text-white text-[10px] font-extrabold uppercase tracking-wider px-4 py-1.5 rounded-r-lg shadow-sm" id="lblWhatIncludes">
                                     Qué incluye:
@@ -448,7 +506,6 @@
                                 </ul>
                             </div>
 
-                            <!-- Columna Resultado -->
                             <div class="md:col-span-5 space-y-2 bg-brand2/5 p-3 rounded-xl border border-brand2/20 self-start">
                                 <div class="inline-flex bg-brand2 text-white text-[10px] font-extrabold uppercase tracking-wider px-4 py-1.5 rounded-r-lg shadow-sm" id="lblWhatResult">
                                     Resultado:
@@ -461,14 +518,12 @@
                     </div>
                 </div>
 
-                <!-- Lista de Nombres para Impresión en Segunda Hoja -->
                 <div id="printParticipantsListContainer" class="hidden space-y-1.5 bg-slate-50 p-3 rounded-xl border border-brand5/40">
                     <h4 class="text-[10px] font-bold text-brand3 uppercase tracking-widest" id="printParticipantsSectionTitle">Participantes Registrados en el Programa</h4>
                     <p class="text-[10px] text-brand7/80" id="printParticipantsString"></p>
                 </div>
             </div>
 
-            <!-- Bloque de Totales en Parte Inferior de la Segunda Página -->
             <div class="grid grid-cols-12 gap-4 border-t border-slate-200 pt-4">
                 <div class="col-span-5 text-[9px] text-brand7/60 self-end leading-relaxed">
                     <span id="lblPrintNoteLine1">* Todos los importes expresados están representados en Moneda Nacional (MXN).</span> <br>
@@ -480,14 +535,13 @@
                         <span id="printSubtotalValue">$0.00</span>
                     </div>
                     <div class="flex justify-between text-[11px] font-semibold text-brand7/80">
-                        <span id="lblPrintIva">I.V.A. Trasladado (16%):</span>
+                        <span id="lblPrintIva">I.V.A. (16%):</span>
                         <span id="printIvaValue">$0.00</span>
                     </div>
                     <div class="flex justify-between text-sm font-black text-brand3 pt-1 border-t border-slate-200">
                         <span id="lblPrintTotal">TOTAL GENERAL:</span>
                         <span id="printTotalValue">$0.00</span>
                     </div>
-                    <!-- Sección de mensualidades / condición de pago en impresión -->
                     <div id="printInstallmentContainer" class="hidden pt-1 mt-1 border-t border-dashed border-brand5/60 flex justify-between items-baseline">
                         <span class="text-[11px] font-bold text-brand3" id="printInstallmentLabel">3 mensualidades de:</span>
                         <span class="text-xs font-black text-brand1" id="printInstallmentValue">$0.00 / mes</span>
@@ -499,7 +553,6 @@
         <!-- PÁGINA 3: CONDICIONES, DIAGNÓSTICO Y FIRMA -->
         <div class="page-break bg-white flex flex-col justify-between" style="height: 100vh;">
             <div class="space-y-6">
-                <!-- Header de Sección -->
                 <div class="flex justify-between items-center border-b border-brand5 pb-4">
                     <div class="flex items-center gap-3">
                         <img src="logo_omkara_gris.png" alt="OMKARA" class="h-6 object-contain" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
@@ -510,13 +563,12 @@
                     <span class="text-xs text-brand7/60" id="printP3SectionLabel">Sección 03 / Términos</span>
                 </div>
 
-                <!-- Contenido de Diagnóstico y Mensaje de Cierre -->
                 <div class="space-y-6 pt-4 text-sm text-brand7 leading-relaxed">
-                    <div class="p-6 bg-slate-50/50 rounded-2xl border-l-4 border-brand1 space-y-3">
+                    <div class="p-6 bg-slate-50/50 rounded-2xl border-l-4 border-brand1 space-y-3" id="printP3GuaranteeBox">
                         <h4 class="text-base font-bold text-brand3 uppercase tracking-wide" id="printP3GuaranteeTitle">Garantía de Alineación Estratégica</h4>
-                        <p class="text-brand7 font-medium" id="printP3GuaranteeText">
+                        <div class="text-brand7 text-sm font-medium" id="printP3GuaranteeText">
                             Con la finalidad de asegurar un diagnóstico estratégico de liderazgo preciso, <strong>OMKARA</strong> agendará una reunión inicial de una hora con el líder directo del participante o equipo a evaluar. Esta sesión podrá ser presencial o en línea.
-                        </p>
+                        </div>
                     </div>
 
                     <p class="text-brand7/90 mt-8" id="printP3ClosingText">
@@ -525,16 +577,12 @@
                 </div>
             </div>
 
-            <!-- Bloque de Firmas y Datos Corporativos de Omkara -->
             <div class="space-y-8 font-medium text-brand7">
                 <div class="flex flex-col items-center justify-center space-y-4">
                     <span class="text-xs font-bold uppercase tracking-widest text-brand7/60" id="printP3AcceptanceLabel"></span>
                     
-                    <!-- Contenedor de firma con cambio de imagen dinámico y fallback de SVG -->
                     <div class="w-64 h-24 relative flex items-center justify-center bg-slate-50 rounded-2xl border border-slate-100 overflow-hidden">
-                        <!-- Imagen de la firma -->
                         <img id="printP3SignatureImg" src="Firma_carla.png" alt="Firma Carla" class="max-h-20 object-contain" onerror="this.style.display='none'; document.getElementById('printP3SignatureFallback').classList.remove('hidden');">
-                        <!-- Fallback SVG si la imagen no se encuentra -->
                         <div id="printP3SignatureFallback" class="hidden flex items-center justify-center w-full h-full">
                             <svg class="w-48 h-16 text-brand3/80" viewBox="0 0 200 80" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M20,50 Q40,10 60,40 T100,30 T140,50 T180,20" />
@@ -544,7 +592,6 @@
                         <span class="absolute bottom-2 text-[9px] text-brand7/40 tracking-wider" id="printP3SignatureValidation">Validación Firma Omkara</span>
                     </div>
 
-                    <!-- Datos y Líneas de Firma actualizadas dinámicamente -->
                     <div class="text-center space-y-1">
                         <p class="font-extrabold text-sm text-brand3" id="printP3SignerName">Carla Muñoz de Cote</p>
                         <p class="text-xs font-semibold text-brand7/70" id="printP3SignerTitle">Strategic Talent Director</p>
@@ -557,11 +604,375 @@
                     </div>
                 </div>
 
-                <!-- Pie de Página Corporativo Tercera Hoja -->
                 <div class="text-center text-[10px] text-brand7/60 border-t border-slate-100 pt-4 flex justify-between">
                     <span>OMKARA S.C.</span>
                     <span id="printP3PageNumber">Pág. 3 de 3</span>
                 </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- AREA DE IMPRESIÓN 2: ENGAGEMENT LETTER EE.UU. (EXECUTIVE SEARCH EN INGLÉS) -->
+    <div id="print-area-engagement" class="hidden print-area bg-white">
+        
+        <!-- HOJA 1: PORTADA & DETALLES DEL ACUERDO -->
+        <div class="page-break bg-white flex flex-col justify-between" style="height: 100vh;">
+            <div class="flex justify-between items-start border-b border-brand5 pb-3">
+                <div class="flex items-center gap-3">
+                    <img src="logo_omkara_gris.png" alt="OMKARA" class="h-6 object-contain" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                    <span class="text-xs font-bold text-brand3 uppercase tracking-wide">OMKARA Executive Search Engagement Letter</span>
+                </div>
+            </div>
+
+            <div class="my-auto space-y-6 pt-2">
+                <div class="text-center space-y-1">
+                    <h2 class="text-xs font-black tracking-widest uppercase text-brand1">Executive Search</h2>
+                    <h1 class="text-2xl font-extrabold text-brand3 tracking-tight">Engagement Letter</h1>
+                </div>
+
+                <p class="text-[10.5px] text-slate-700 leading-relaxed text-justify">
+                    This letter constitutes a binding engagement between <strong>Omkara Empresarial, S.C.</strong> and the Client identified below, governed by the terms herein and by the Recruitment & Selection Policies and Guarantee Policy (Exhibit A). This letter becomes effective upon execution by both parties and receipt of the upfront payment.
+                </p>
+
+                <!-- 1. Parties -->
+                <div class="space-y-1.5">
+                    <h3 class="text-xs font-bold text-brand3 uppercase tracking-wider border-b pb-1">1. Parties</h3>
+                    <table class="w-full border-collapse border border-slate-300 text-[10.5px]">
+                        <tbody>
+                            <tr class="border-b border-slate-300">
+                                <td class="w-1/3 p-2 font-bold bg-slate-50 border-r border-slate-300 text-slate-600">Client Legal Entity Name</td>
+                                <td class="w-2/3 p-2 font-semibold text-slate-800" id="pClientLegalName">Crest Commercial</td>
+                            </tr>
+                            <tr class="border-b border-slate-300">
+                                <td class="p-2 font-bold bg-slate-50 border-r border-slate-300 text-slate-600">Client Primary Contact Name & Title</td>
+                                <td class="p-2 font-semibold text-slate-800" id="pClientContact">Erik / Margaret Fulkerson</td>
+                            </tr>
+                            <tr class="border-b border-slate-300">
+                                <td class="p-2 font-bold bg-slate-50 border-r border-slate-300 text-slate-600">Client Email</td>
+                                <td class="p-2 font-semibold text-slate-800" id="pClientEmail">erik@crestcommercial.com</td>
+                            </tr>
+                            <tr class="border-b border-slate-300">
+                                <td class="p-2 font-bold bg-slate-50 border-r border-slate-300 text-slate-600">City, State/Province</td>
+                                <td class="p-2 font-semibold text-slate-800" id="pClientLocation">Dallas, TX</td>
+                            </tr>
+                            <tr class="border-b border-slate-300">
+                                <td class="p-2 font-bold bg-slate-50 border-r border-slate-300 text-slate-600">Country</td>
+                                <td class="p-2 font-semibold text-slate-800" id="pClientCountry">The United States of America</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 2. Engagement Details -->
+                <div class="space-y-1.5">
+                    <h3 class="text-xs font-bold text-brand3 uppercase tracking-wider border-b pb-1">2. Engagement Details</h3>
+                    <table class="w-full border-collapse border border-slate-300 text-[10.5px]">
+                        <tbody>
+                            <tr class="border-b border-slate-300">
+                                <td class="w-1/3 p-2 font-bold bg-slate-50 border-r border-slate-300 text-slate-600">Position Title</td>
+                                <td class="w-2/3 p-2 font-semibold text-brand3" id="pPositionTitle">Senior Property Accounting Manager</td>
+                            </tr>
+                            <tr class="border-b border-slate-300">
+                                <td class="p-2 font-bold bg-slate-50 border-r border-slate-300 text-slate-600">Role Location (City, State, Country)</td>
+                                <td class="p-2 font-semibold text-slate-800" id="pRoleLocation">Dallas, TX</td>
+                            </tr>
+                            <tr class="border-b border-slate-300">
+                                <td class="p-2 font-bold bg-slate-50 border-r border-slate-300 text-slate-600">Direct Hiring Manager</td>
+                                <td class="p-2 font-semibold text-slate-800" id="pHiringManager">Erik / Margaret Fulkerson</td>
+                            </tr>
+                            <tr class="border-b border-slate-300">
+                                <td class="p-2 font-bold bg-slate-50 border-r border-slate-300 text-slate-600">Department/Function</td>
+                                <td class="p-2 font-semibold text-slate-800" id="pDepartment">Accounting</td>
+                            </tr>
+                            <tr class="border-b border-slate-300">
+                                <td class="p-2 font-bold bg-slate-50 border-r border-slate-300 text-slate-600">Target Start Date (Estimated)</td>
+                                <td class="p-2 font-semibold text-slate-800" id="pTargetStartDate">ASAP</td>
+                            </tr>
+                            <tr class="border-b border-slate-300">
+                                <td class="p-2 font-bold bg-slate-50 border-r border-slate-300 text-slate-600">Proposed Kick-off Date</td>
+                                <td class="p-2 font-semibold text-slate-800" id="pKickoffDate">April 20th 4:00 CTS</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="text-[9px] text-slate-400 border-t border-slate-100 pt-3 flex justify-between">
+                <span>hola@omkara.mx · omkara.mx · +52 33 1599 4562</span>
+                <span>1 of 4</span>
+            </div>
+        </div>
+
+        <!-- HOJA 2: FEE STRUCTURE & KEY TERMS -->
+        <div class="page-break bg-white flex flex-col justify-start" style="height: 100vh;">
+            <div class="flex justify-between items-start border-b border-brand5 pb-3">
+                <div class="flex items-center gap-3">
+                    <img src="logo_omkara_gris.png" alt="OMKARA" class="h-6 object-contain" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                    <span class="text-xs font-bold text-brand3 uppercase tracking-wide">OMKARA Executive Search - Engagement Letter</span>
+                </div>
+            </div>
+
+            <div class="mt-8 space-y-4 pt-2">
+                <!-- 3. Fee Structure -->
+                <div class="space-y-1.5">
+                    <h3 class="text-xs font-bold text-brand3 uppercase tracking-wider border-b pb-1">3. Fee Structure</h3>
+                    <table class="w-full border-collapse border border-slate-300 text-[10px]">
+                        <tbody>
+                            <tr class="border-b border-slate-200">
+                                <td class="w-2/3 p-1.5 font-semibold bg-slate-50 border-r border-slate-300 text-slate-600">Estimated Annual Gross Compensation (USD)</td>
+                                <td class="w-1/3 p-1.5 text-right font-extrabold text-slate-800" id="pAnnualComp">$95,000</td>
+                            </tr>
+                            <tr class="border-b border-slate-200">
+                                <td class="p-1.5 font-semibold bg-slate-50 border-r border-slate-300 text-slate-600">Standard Service Fee Rate</td>
+                                <td class="p-1.5 text-right font-semibold text-slate-800" id="pStandardRate">20%</td>
+                            </tr>
+                            <tr class="border-b border-slate-200">
+                                <td class="p-1.5 font-semibold bg-slate-50 border-r border-slate-300 text-slate-600">Discounted / Applied Rate</td>
+                                <td class="p-1.5 text-right font-bold text-brand3" id="pDiscountedRate">15%</td>
+                            </tr>
+                            <tr class="border-b border-slate-200">
+                                <td class="p-1.5 font-bold bg-slate-100 border-r border-slate-300 text-brand3">Total Placement Fee</td>
+                                <td class="p-1.5 text-right font-black text-brand3 text-xs" id="pTotalPlacementFee">$14,250</td>
+                            </tr>
+                            <tr class="border-b border-slate-200">
+                                <td class="p-1.5 font-semibold bg-slate-50 border-r border-slate-300 text-slate-600">Upfront Payment (<span id="pFirstPayPctLabel">50</span>%)</td>
+                                <td class="p-1.5 text-right font-semibold text-slate-800" id="pUpfrontPayment">$7,125</td>
+                            </tr>
+                            <tr class="border-b border-slate-200">
+                                <td class="p-1.5 font-semibold bg-slate-50 border-r border-slate-300 text-slate-600">Balance at Hire (<span id="pSecondPayPctLabel">50</span>%)</td>
+                                <td class="p-1.5 text-right font-semibold text-slate-800" id="pBalanceAtHire">$7,125</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Grid Formato Oficial -->
+                <table class="w-full border-collapse border border-slate-300 text-center text-[9px] uppercase">
+                    <thead>
+                        <tr class="bg-brand3 text-white font-extrabold">
+                            <th class="p-1.5 border border-slate-300 w-1/3">Total Fee</th>
+                            <th class="p-1.5 border border-slate-300 w-1/3">Upfront - Due at Kickoff</th>
+                            <th class="p-1.5 border border-slate-300 w-1/3">Balance - Due at Hire</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="font-extrabold text-slate-900 bg-slate-50 text-[10px]">
+                            <td class="p-2 border border-slate-300" id="pGridTotal">USD [$14,250]</td>
+                            <td class="p-2 border border-slate-300 text-brand3" id="pGridUpfront">USD [$7,125]</td>
+                            <td class="p-2 border border-slate-300" id="pGridBalance">USD [$7,125]</td>
+                        </tr>
+                        <tr class="text-[8px] text-slate-500 font-semibold bg-white">
+                            <td class="p-1.5 border border-slate-300">Fee % x Annual Comp</td>
+                            <td class="p-1.5 border border-slate-300"><span id="pGridFirstPayPct">50</span>% - Retainer</td>
+                            <td class="p-1.5 border border-slate-300"><span id="pGridSecondPayPct">50</span>% Upon offer acceptance</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p class="text-[8.5px] text-slate-500 leading-normal">
+                    Fee basis: base salary plus annualized average of variable monetary components (bonuses, commissions, incentives). Non-monetary benefits, equity, relocation bonuses, and one-time payments excluded. Fee adjusts if final compensation differs from estimate above.
+                </p>
+
+                <!-- 4. Key Terms -->
+                <div class="space-y-1.5">
+                    <h3 class="text-xs font-bold text-brand3 uppercase tracking-wider border-b pb-1">4. Key Terms</h3>
+                    <table class="w-full border-collapse border border-slate-300 text-[10px] text-left">
+                        <tbody>
+                            <tr class="border-b border-slate-200">
+                                <td class="w-1/4 p-2 font-bold bg-slate-50 border-r border-slate-300 text-slate-700">Payment</td>
+                                <td class="w-3/4 p-2 text-slate-600 leading-relaxed text-justify">
+                                    <span id="pKeyPaymentPct1">50</span>% upfront due upon execution of this letter. <span id="pKeyPaymentPct2">50</span>% due within 10 calendar days of the candidate's written offer acceptance. No search activity commences prior to receipt of upfront payment.
+                                </td>
+                            </tr>
+                            <tr class="border-b border-slate-200">
+                                <td class="p-2 font-bold bg-slate-50 border-r border-slate-300 text-slate-700">Exclusivity</td>
+                                <td class="p-2 text-slate-600 leading-relaxed text-justify">
+                                    This engagement is exclusive. Omkara is the sole firm authorized to conduct this search. Opening the position to another firm during this active engagement triggers retention of the upfront payment plus a 20% penalty on the estimated total fee.
+                                </td>
+                            </tr>
+                            <tr class="border-b border-slate-200">
+                                <td class="p-2 font-bold bg-slate-50 border-r border-slate-300 text-slate-700">Candidate Protection</td>
+                                <td class="p-2 text-slate-600 leading-relaxed text-justify">
+                                    Any candidate introduced by Omkara - whether interviewed or not - is an Omkara introduction. If the Client hires that candidate within 12 months of introduction, the full fee applies regardless of hiring channel. Omkara's introduction is presumed unless the Client provides contemporaneous written evidence of independent sourcing.
+                                </td>
+                            </tr>
+                            <tr class="border-b border-slate-200">
+                                <td class="p-2 font-bold bg-slate-50 border-r border-slate-300 text-slate-700">Cancellation</td>
+                                <td class="p-2 text-slate-600 leading-relaxed text-justify">
+                                    Before finalist shortlist: upfront retained. After finalist shortlist: 80% of total estimated fee due; upfront credited. Profile changes requiring material restart treated as new engagement. Search cannot be paused once initiated.
+                                </td>
+                            </tr>
+                            <tr class="border-b border-slate-200">
+                            <td class="w-1/4 p-2 font-bold bg-slate-50 border-r border-slate-300 text-slate-700">Guarantee</td>
+                            <td class="w-3/4 p-2 text-slate-600 leading-relaxed text-justify">
+                                Replacement guarantee governed exclusively by the Guarantee Policy (Exhibit A). Fee is due upon offer acceptance regardless of whether the candidate joins. Counter-offer no-shows: one replacement search at no additional professional fee, subject to conditions in Exhibit A.
+                            </td>
+                            </tr>
+                            <tr class="border-b border-slate-200">
+                                <td class="p-2 font-bold bg-slate-50 border-r border-slate-300 text-slate-700">Liability</td>
+                                <td class="p-2 text-slate-600 leading-relaxed text-justify">
+                                    Omkara's maximum aggregate liability shall not exceed 50% of total professional fees effectively paid by the Client under this specific engagement.
+                                </td>
+                            </tr>
+                            <tr class="border-b border-slate-200">
+                                <td class="p-2 font-bold bg-slate-50 border-r border-slate-300 text-slate-700">Governing Documents</td>
+                                <td class="p-2 text-slate-600 leading-relaxed text-justify">
+                                    This engagement is subject to Omkara's Recruitment & Selection Policies and Guarantee Policy (Exhibit A), acknowledged and accepted by the Client upon execution of this letter.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="text-[9px] text-slate-400 border-t border-slate-100 pt-3 flex justify-between">
+                <span>hola@omkara.mx · omkara.mx · +52 33 1599 4562</span>
+                <span>2 of 4</span>
+            </div>
+        </div>
+
+        <!-- HOJA 3: KEY TERMS CONTINUATION & ACCEPTANCE -->
+        <div class="page-break bg-white flex flex-col justify-start" style="height: 100vh;">
+            <div class="flex justify-between items-start border-b border-brand5 pb-3">
+                <div class="flex items-center gap-3">
+                    <img src="logo_omkara_gris.png" alt="OMKARA" class="h-6 object-contain" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                    <span class="text-xs font-bold text-brand3 uppercase tracking-wide">OMKARA Executive Search - Engagement Letter</span>
+                </div>
+            </div>
+
+            <div class="mt-8 space-y-5 pt-1">
+                <!-- 4. Key Terms (Continuation) -->
+                <table class="w-full border-collapse border border-slate-300 text-[10px] text-left">
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+
+                <!-- 5. Acceptance & Execution -->
+                <div class="space-y-4">
+                    <h3 class="text-xs font-bold text-brand3 uppercase tracking-wider border-b pb-1">5. Acceptance & Execution</h3>
+                    <p class="text-[10px] text-slate-600 leading-relaxed">
+                        By signing below, both parties agree to this engagement letter and confirm acceptance of Exhibit A, which forms an integral part of this agreement.
+                    </p>
+
+                    <!-- Firmas Duales -->
+                    <div class="grid grid-cols-2 gap-8 text-[10px] pt-4 border-t border-slate-100">
+                        <!-- Client Column -->
+                        <div class="space-y-4 flex flex-col justify-start">
+                            <span class="font-extrabold text-slate-900 border-b border-slate-200 pb-1 uppercase text-[11px] block">Client</span>
+                            <div class="space-y-3">
+                                <div>
+                                    <span class="text-[8px] uppercase text-slate-500 block">Legal Entity Name</span>
+                                    <span class="font-bold text-slate-800 text-[11px]" id="sigClientLegalName">Crest Commercial</span>
+                                </div>
+                                <div class="pt-4 border-b border-slate-200 pb-1">
+                                    <span class="text-[8px] uppercase text-slate-500 block">Authorized Signatory Name & Title</span>
+                                    <span class="font-bold text-slate-800" id="sigClientContact">Erik / Margaret Fulkerson</span>
+                                </div>
+                                <div class="pt-4 border-b border-slate-200 pb-1">
+                                    <span class="text-[8px] uppercase text-slate-500 block">Signature</span>
+                                    <span class="text-slate-300 font-light italic">X _______________________</span>
+                                </div>
+                                <div class="pt-4 border-b border-slate-200 pb-1">
+                                    <span class="text-[8px] uppercase text-slate-500 block">Date</span>
+                                    <span class="text-slate-400 font-medium">[Date]</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Omkara Column -->
+                        <div class="space-y-4 flex flex-col justify-between border-l border-slate-100 pl-6">
+                            <span class="font-extrabold text-brand3 border-b border-slate-200 pb-1 uppercase text-[11px] block">Omkara Empresarial, S.C.</span>
+                            <div class="space-y-3">
+                                <div>
+                                    <span class="text-[8px] uppercase text-slate-500 block">Legal Entity</span>
+                                    <span class="font-bold text-slate-800 text-[11px]">Omkara Empresarial, S.C.</span>
+                                </div>
+                                <div class="relative pt-2">
+                                    <!-- Contenedor Firma Oficial -->
+                                    <div class="w-48 h-12 relative flex items-center justify-start overflow-hidden">
+                                        <img id="printP3SignatureImgEng" src="Firma_carla.png" alt="Firma" class="max-h-12 object-contain" onerror="this.style.display='none'; document.getElementById('printP3SignatureFallbackEng').classList.remove('hidden');">
+                                        <div id="printP3SignatureFallbackEng" class="hidden flex items-center justify-start w-full h-full">
+                                            <svg class="w-32 h-10 text-brand3/80" viewBox="0 0 200 80" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M20,50 Q40,10 60,40 T100,30 T140,50 T180,20" />
+                                                <path d="M30,35 Q60,65 120,40 T170,45" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pt-1 border-b border-slate-200 pb-1">
+                                    <span class="text-[8px] uppercase text-slate-500 block">Authorized Signatory Name</span>
+                                    <span class="font-bold text-slate-800" id="sigSignerName">Carla Muñoz de Cote</span>
+                                </div>
+                                <div class="pt-4 border-b border-slate-200 pb-1">
+                                    <span class="text-[8px] uppercase text-slate-500 block">Title</span>
+                                    <span class="font-bold text-brand3 text-[9px]" id="sigSignerTitle">Strategic Talent Director</span>
+                                </div>
+                                <div class="pt-4 border-b border-slate-200 pb-1">
+                                    <span class="text-[8px] uppercase text-slate-500 block">Date</span>
+                                    <span class="font-bold text-slate-800" id="sigDate">...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-[9px] text-slate-400 border-t border-slate-100 pt-3 flex justify-between">
+                <span>hola@omkara.mx · omkara.mx · +52 33 1599 4562</span>
+                <span>3 of 4</span>
+            </div>
+        </div>
+
+        <!-- HOJA 4: EXHIBIT A -->
+        <div class="page-break bg-white flex flex-col justify-between" style="height: 100vh;">
+            <div class="flex justify-between items-start border-b border-brand5 pb-3">
+                <div class="flex items-center gap-3">
+                    <img src="logo_omkara_gris.png" alt="OMKARA" class="h-6 object-contain" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                    <span class="text-xs font-bold text-brand3 uppercase tracking-wide">OMKARA Executive Search Engagement Letter</span>
+                </div>
+            </div>
+
+            <div class="my-auto space-y-6 max-w-2xl mx-auto w-full pt-1">
+                <div class="space-y-1 text-center">
+                    <h2 class="text-lg font-extrabold text-brand3 tracking-tight">Exhibit A</h2>
+                    <h3 class="text-xs font-bold text-slate-600 uppercase tracking-widest">Governing Documents</h3>
+                    <div class="w-10 h-0.5 bg-brand1 mx-auto mt-2"></div>
+                </div>
+
+                <p class="text-[11px] text-slate-700 leading-relaxed text-center">
+                    Attached hereto and incorporated by reference as an integral part of this Engagement Letter:
+                </p>
+
+                <!-- Tabla de Documentos de Referencia -->
+                <table class="w-full border-collapse border border-slate-300 text-[10.5px] text-left">
+                    <thead>
+                        <tr class="bg-slate-50 text-slate-700 font-extrabold border-b border-slate-300 uppercase">
+                            <th class="p-2.5 border-r border-slate-300 w-12 text-center text-slate-500">#</th>
+                            <th class="p-2.5">Document Title & Version</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-slate-200">
+                            <td class="p-2.5 text-center border-r border-slate-300 font-extrabold text-slate-400">1</td>
+                            <td class="p-2.5 font-semibold text-slate-800">Recruitment & Selection Policies - United States (Version in effect at time of engagement)</td>
+                        </tr>
+                        <tr class="border-b border-slate-200">
+                            <td class="p-2.5 text-center border-r border-slate-300 font-extrabold text-slate-400">2</td>
+                            <td class="p-2.5 font-semibold text-slate-800">Placement Guarantee Policy - United States (Version in effect at time of engagement)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p class="text-[11px] text-slate-600 leading-relaxed text-center italic bg-slate-50/50 p-4 rounded-xl border border-dashed border-brand5/50">
+                    The Client confirms having received, reviewed, and accepted both documents prior to execution of this letter.
+                </p>
+            </div>
+
+            <div class="text-[9px] text-slate-400 border-t border-slate-100 pt-3 flex justify-between">
+                <span>hola@omkara.mx · omkara.mx · +52 33 1599 4562</span>
+                <span>4 of 4</span>
             </div>
         </div>
 
@@ -575,29 +986,81 @@
         // Catálogos Traducidos (Español / Inglés)
         const translations = {
             es: {
-                propTitleExecutive: "EXECUTIVE SEARCH / ATRACTOR DE TALENTO",
-                propTitleLeadership: "DESARROLLO DIRECTIVO & ASSESSMENT DE LIDERAZGO",
-                propTitleTalentUp: "TALENT UP / ACELERACIÓN DE COMPETENCIAS",
+                propTitleExecutive: "ATRACCIÓN DE TALENTO",
+                propTitleLeadership: "DESARROLLO DIRECTIVO",
+                propTitleTalentUp: "TALENT UP",
                 preparedFor: "PREPARADO PARA:",
                 attentionTo: "ATENCIÓN A:",
                 emission: "Emisión:",
-                statusLabel: "Estatus:",
-                statusValue: "Propuesta Inicial",
-                sectionTitleCosts: "OMKARA · Propuesta de Costos e Inclusión",
+                statusLabel: "",
+                statusValue: "",
+                sectionTitleCosts: "OMKARA · Propuesta económica",
                 sectionLabelCosts: "Sección 02 / Presupuesto",
                 budgetTitle: "Presupuesto y Desglose de Inversión",
-                budgetDesc: "A continuación, se presenta la distribución financiera requerida para la ejecución del proyecto de capital humano en base a los requerimientos pactados:",
+                budgetDesc: "La siguiente propuesta muesta la inversión estimada del proyecto",
                 subtotalNeto: "Subtotal Neto:",
-                ivaTrasladado: "I.V.A. Trasladado (16%):",
+                ivaTrasladado: "I.V.A. (16%):",
                 totalGeneral: "TOTAL GENERAL:",
                 condicionPago: "Condición de Pago:",
                 singleExhib: "1 sola exhibición (100%)",
                 installmentLabel: "pagos de:",
                 installmentSuf: "/ mes",
                 termSection: "Sección 03 / Términos",
-                guaranteeTitle: "Garantía de Alineación Estratégica",
-                guaranteeText: "Con la finalidad de asegurar un diagnóstico estratégico de liderazgo preciso, <strong>OMKARA</strong> agendará una reunión inicial de una hora con el líder directo del participante o equipo a evaluar. Esta sesión podrá ser presencial o en línea.",
-                footerClosing: "Agradecemos tu atención a la presente propuesta y esperamos de todo corazón poder sumar valor y acelerar el desarrollo del mejor talento humano para tu organización.",
+                
+                // Leadership Guarantee (Original)
+                guaranteeTitle: "",
+                guaranteeText: `
+                    <div class="space-y-3 text-sm text-brand7 leading-relaxed">
+                        <p>Para asegurar la precisión metodológica, el cumplimiento de los tiempos de entrega y el impacto real que caracteriza a <strong>OMKARA</strong>, la ejecución de cualquiera de nuestros programas está sujeta al cumplimiento de los siguientes requerimientos previos e indispensables por parte del cliente:</p>
+                        <ul class="list-disc pl-5 space-y-2 text-brand7/90">
+                            <li><strong>Documentación Base del Puesto:</strong> Compartir de forma oportuna la información solicitada por parte de Omkara.</li>
+                            <li><strong>Gobernanza y Agenda de Alta Dirección:</strong> Contar con la disponibilidad de tiempo y participación activa por parte de la Dirección General y stakeholders clave para la sesión inicial de arranque y para las sesiones de entrega de resultados ejecutivos.</li>
+                            <li><strong>Transparencia y Gestión del Cambio:</strong> Asegurar que todos los líderes participantes estén debidamente enterados por parte de la empresa de que iniciarán un proceso oficial de diagnóstico o acompañamiento (independientemente del programa modular seleccionado).</li>
+                            <li><strong>Nota de Confidencialidad:</strong> Toda la información documental, estratégica y conductual compartida durante el proceso está protegida bajo los estándares de confidencialidad y propiedad de OMKARA.</li>
+                        </ul>
+                    </div>
+                `,
+                footerClosing: "Agradecemos tu atención a la presente propuesta y quedamos a tu entera disposición para colaborar en el desarrollo estratégico del talento clave de tu organización.",
+                
+                // Executive IMPORTANT INFO (New Request)
+                guaranteeTitleExecutive: "INFORMACIÓN IMPORTANTE",
+                guaranteeTextExecutive: `
+                    <div class="space-y-3 text-xs leading-relaxed text-brand7">
+                        <div>
+                            <strong class="text-brand3 block uppercase text-[11px] mb-0.5">Sobre la inversión</strong>
+                            <ul class="list-disc pl-4 space-y-0.5 text-brand7/90">
+                                <li>Esta propuesta fue elaborada con base en la información proporcionada por su empresa.</li>
+                                <li>La inversión final considera la compensación total de la posición, incluyendo sueldo, bonos, comisiones, prestaciones y beneficios aplicables.</li>
+                                <li>Si las condiciones finales de contratación cambian, la inversión se ajustará proporcionalmente.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <strong class="text-brand3 block uppercase text-[11px] mb-0.5">Sobre el proceso</strong>
+                            <ul class="list-disc pl-4 space-y-0.5 text-brand7/90">
+                                <li>Omkara determinará la modalida de búsqueda más adecuada para cada vacante (Reclutamiento Especializado o Headhunting).</li>
+                                <li>La clasificación dependerá de factores como especialización, complejidad y disponibilidad del talento en el mercado.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <strong class="text-brand3 block uppercase text-[11px] mb-0.5">Sobre el inicio del servicio</strong>
+                            <ul class="list-disc pl-4 space-y-0.5 text-brand7/90">
+                                <li>Para iniciar el proceso se requiere la autorización de la vacante y un anticipo del 50%.</li>
+                                <li>El saldo restante se factura al cierre exitoso de la posición.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <strong class="text-brand3 block uppercase text-[11px] mb-0.5">Políticas aplicables</strong>
+                            <ul class="list-disc pl-4 space-y-0.5 text-brand7/90">
+                                <li>Todos los servicios se encuentran sujetos a nuestras Políticas de Reclutamiento y Políticas de Garantía vigentes.</li>
+                            </ul>
+                        </div>
+                        <p class="mt-2 text-xs font-semibold italic text-brand3 leading-relaxed">
+                            Como valor agregado, Omkara realiza una sesión de alineación con el líder de la posición y el equipo de Capital Humano para asegurar una definición clara del perfil, los criterios de éxito del puesto y maximizar la precisión de la búsqueda.
+                        </p>
+                    </div>
+                `,
+                footerClosingExecutive: "Agradecemos ser considerados para acompañarlos en la búsqueda de talento. Sabemos que cada contratación tiene un impacto directo en el crecimiento de una organización. Por ello, nuestro compromiso es acompañarte con metodología, experiencia y una visión consultiva que incremente la probabilidad de una contratación exitosa.",
+
                 acceptanceLabel: "",
                 signatureValidation: "Validación Firma Omkara",
                 titleDirector: "Strategic Talent Director",
@@ -609,11 +1072,11 @@
                 serviceLabel: "Servicio",
                 contractValueLabel: "Valor del Contrato",
                 vacanciesHeaders: {
-                    name: "Nombre del Puesto",
-                    profile: "Nivel / Perfil",
-                    salary: "Sueldo Bruto",
-                    fee: "Fee (%)",
-                    cost: "Costo Estimado Neto"
+                    name: "Nombre de puesto",
+                    service: "Tipo de servicio",
+                    salaryMonthly: "Sueldo Mensual Bruto (Incluye Bonos y Prestaciones)",
+                    salaryAnnual: "Sueldo Anual Bruto",
+                    investment: "Inversión Estimada"
                 },
                 participantsSectionTitle: "Participantes Registrados en el Programa",
                 pageOf: "Pág.",
@@ -621,17 +1084,17 @@
                 whatIncludes: "Qué incluye:",
                 resultLabel: "Resultado:",
                 copyrightText: "© OMKARA S.C",
-                confidentialText: "Confidencial & Propietario"
+                confidentialText: "Confidencial"
             },
             en: {
-                propTitleExecutive: "EXECUTIVE SEARCH / TALENT ATTRACTOR",
-                propTitleLeadership: "EXECUTIVE DEVELOPMENT & LEADERSHIP ASSESSMENT",
-                propTitleTalentUp: "TALENT UP / COMPETENCY ACCELERATION",
+                propTitleExecutive: "EXECUTIVE SEARCH",
+                propTitleLeadership: "LEADERSHIP ASSESSMENT",
+                propTitleTalentUp: "TALENT UP",
                 preparedFor: "PREPARED FOR:",
                 attentionTo: "ATTENTION TO:",
                 emission: "Issued:",
-                statusLabel: "Status:",
-                statusValue: "Initial Proposal",
+                statusLabel: "",
+                statusValue: "",
                 sectionTitleCosts: "OMKARA · Cost & Inclusion Proposal",
                 sectionLabelCosts: "Section 02 / Budget",
                 budgetTitle: "Budget & Investment Breakdown",
@@ -644,10 +1107,52 @@
                 installmentLabel: "payments of:",
                 installmentSuf: "/ month",
                 termSection: "Section 03 / Terms",
+                
+                // Leadership Guarantee (Original)
                 guaranteeTitle: "Strategic Alignment Guarantee",
                 guaranteeText: "In order to ensure a precise strategic leadership diagnosis, <strong>OMKARA</strong> will schedule an initial one-hour meeting with the direct leader of the participant or team to be evaluated. This session may be face-to-face or online.",
                 footerClosing: "We appreciate your attention to this proposal and sincerely look forward to adding value and accelerating the development of the best human talent for your organization.",
-                acceptanceLabel: "",
+                
+                // Executive IMPORTANT INFO (New Request)
+                guaranteeTitleExecutive: "IMPORTANT INFORMATION",
+                guaranteeTextExecutive: `
+                    <div class="space-y-3 text-xs leading-relaxed text-brand7 font-medium">
+                        <div>
+                            <strong class="text-brand3 block uppercase text-[11px] mb-0.5">About the Investment</strong>
+                            <ul class="list-disc pl-4 space-y-0.5 text-brand7/90">
+                                <li>This proposal was prepared based on the information provided by your company.</li>
+                                <li>The final investment considers the total compensation of the position, including salary, bonuses, commissions, benefits, and applicable perks.</li>
+                                <li>If the final hiring conditions change, the investment will be adjusted proportionally.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <strong class="text-brand3 block uppercase text-[11px] mb-0.5">About the Process</strong>
+                            <ul class="list-disc pl-4 space-y-0.5 text-brand7/90">
+                                <li>Omkara will determine the most appropriate search modality for each vacancy (Specialized Recruitment or Headhunting).</li>
+                                <li>Classification will depend on factors such as specialization, complexity, and talent availability in the market.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <strong class="text-brand3 block uppercase text-[11px] mb-0.5">About the Start of Service</strong>
+                            <ul class="list-disc pl-4 space-y-0.5 text-brand7/90">
+                                <li>To start the process, authorization of the vacancy and a 50% advance payment are required.</li>
+                                <li>The remaining balance is invoiced upon successful closure of the position.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <strong class="text-brand3 block uppercase text-[11px] mb-0.5">Applicable Policies</strong>
+                            <ul class="list-disc pl-4 space-y-0.5 text-brand7/90">
+                                <li>All services are subject to our current Recruitment and Guarantee Policies.</li>
+                            </ul>
+                        </div>
+                        <p class="mt-2 text-xs font-semibold italic text-brand3 leading-relaxed">
+                            As an added value, Omkara conducts an alignment session with the hiring manager and the Human Capital team to ensure a clear definition of the profile, the success criteria of the position, and maximize search accuracy.
+                        </p>
+                    </div>
+                `,
+                footerClosingExecutive: "We appreciate being considered to partner with you in your talent search. We know that every hire has a direct impact on an organization's growth. Therefore, our commitment is to accompany you with methodology, experience, and a consultative vision that increases the likelihood of a successful placement.",
+
+                acceptanceLabel: "Acceptance of the Proposal",
                 signatureValidation: "Omkara Corporate Signature Validation",
                 titleDirector: "Managing Partner",
                 companyName: "OMKARA Organizational Consulting",
@@ -659,10 +1164,10 @@
                 contractValueLabel: "Contract Value",
                 vacanciesHeaders: {
                     name: "Position Name",
-                    profile: "Level / Profile",
-                    salary: "Gross Salary",
-                    fee: "Fee (%)",
-                    cost: "Estimated Net Cost"
+                    service: "Type of Service",
+                    salaryMonthly: "Gross Monthly Salary (Includes Bonuses & Benefits)",
+                    salaryAnnual: "Gross Annual Salary",
+                    investment: "Estimated Investment"
                 },
                 participantsSectionTitle: "Registered Participants in the Program",
                 pageOf: "Page",
@@ -684,119 +1189,101 @@
             leadership: [
                 { 
                     id: "diagnostic", 
-                    name: "Leadership Snapshot", 
+                    name: "ADN de Liderazgo", 
+                    nameEn: "Leadership Snapshot", //nombre en inglés
                     price: 29000,
                     tagline: "Visibilidad inmediata para decisiones críticas",
                     taglineEn: "Immediate visibility for critical decisions",
-                    description: "Ideal para entender, en poco tiempo, si tu equipo actual tiene la <strong>capacidad real</strong> para ejecutar lo que el negocio exige.",
-                    descriptionEn: "Ideal for understanding, in a short time, if your current team has the <strong>real capacity</strong> to execute what the business demands.",
+                    description: "Diagnóstico cuantitativo individual/grupal (Hogan) para medir capacidad, temple y riesgos del perfil bajo presión (personalidad y competencias)",
+                    descriptionEn: "Individual/group quantitative diagnostics (Hogan) to measure the profile's capability, core temperament, and derailers under pressure (personality and competencies)",
                     inclusions: [
-                        "Alineación estratégica con Dirección y stakeholders",
-                        "Evaluación de liderazgo (Hogan Insight & Configure)",
-                        "Contraste de competencias vs estrategia de negocio y perfil de puesto",
-                        "Reportes ejecutivos para el evaluado y Dirección General"
+                        "Reporte Hogan",
+                        "Mapa de Riesgos individual",
+                        "Reporte Ejecutivo"
                     ],
                     inclusionsEn: [
-                        "Strategic alignment with Management and stakeholders",
-                        "Leadership assessment (Hogan Insight & Configure)",
-                        "Competency contrast vs business strategy and job profile",
-                        "Executive reports for the assessee and General Management"
+                        "Hogan Report",
+                        "Individual Risk Map",
+                        "Executive Report"
                     ],
-                    result: "Claridad objetiva sobre si cuentas con el <strong>equipo correcto</strong> para el reto actual.",
-                    resultEn: "Objective clarity on whether you have the <strong>right team</strong> for the current challenge."
+                    result: "Certeza de tener al talento correcto y detección temprana de riesgos antes de que afecten al negocio",
+                    resultEn: "Certainty of having the right talent in place and early detection of risks before they impact the business"
                 },
                 { 
                     id: "high_impact", 
-                    name: "Leadership Blueprint", 
+                    name: "Eje de Liderazgo", 
+                    nameEn: "Leadership Blueprint", //nombre en inglés
                     price: 37000,
                     tagline: "Mapeo profundo y plan de desarrollo accionable",
                     taglineEn: "Deep mapping and actionable development plan",
-                    description: "Ayuda a estructurar de manera directa el camino de crecimiento de tus líderes clave, traduciendo potencial en un mapa accionable.",
-                    descriptionEn: "Helps directly structure the growth path of your key leaders, translating potential into an actionable roadmap.",
+                    description: "Diagnóstico Hogan y análisis de fit cultural para entender cómo el líder impacta la estrategia, diseñando su Plan de Desarrollo (PDI)",
+                    descriptionEn: "Hogan assessment and cultural fit analysis to understand how the leader impacts strategy, followed by the design of their Individual Development Plan (IDP)",
                     inclusions: [
-                        "Alineación estratégica con Dirección y stakeholders",
-                        "Evaluación de liderazgo (Hogan Insight & Configure)",
-                        "Contraste de competencias vs estrategia de negocio y perfil de puesto",
-                        "Reportes ejecutivos para el evaluado y Dirección General",
-                        "Sesiones de feedback y feedforward de alto nivel",
-                        "Plan de Desarrollo Individual (PDI) alineado a objetivos estratégicos",
-                        "Reportes ejecutivos para Dirección General"
+                        "Diagnóstico de liderazgo/cultura",
+                        "Retroalimentación",
+                        "PDI con KPIs",
+                        "Dashboard de seguimiento"
                     ],
                     inclusionsEn: [
-                        "Strategic alignment with Management and stakeholders",
-                        "Leadership assessment (Hogan Insight & Configure)",
-                        "Competency contrast vs business strategy and job profile",
-                        "Executive reports for the assessee and General Management",
-                        "High-level feedback and feedforward sessions",
-                        "Individual Development Plan (IDP) aligned to strategic objectives",
-                        "Executive reports for General Management"
+                        "Leadership/culture assessment",
+                        "Feedback session",
+                        "IDP with KPIs",
+                        "Tracking Dashboard"
                     ],
-                    result: "Un plan estratégico <strong>(PDI) estructurado</strong> para acelerar de forma real el talento de tus directivos.",
-                    resultEn: "A structured <strong>Individual Development Plan (IDP)</strong> to truly accelerate your directors' talent."
+                    result: "Destrabar la ejecución del negocio alineando el comportamiento del líder con la estrategia",
+                    resultEn: "Unlocking business execution by aligning leader behavior with organizational strategy"
                 },
                 { 
                     id: "growth_journey", 
-                    name: "Leadership Growth", 
+                    name: "Líderes en Evolución", 
+                    nameEn: "Leadership Growth", //nombre en inglés
                     price: 75000,
                     tagline: "Transformación profunda y sostenida del comportamiento directivo",
                     taglineEn: "Deep and sustained transformation of executive behavior",
-                    description: "Acompañamiento mensual estructurado con metodologías sólidas para lograr cambios reales y medibles en el liderazgo organizacional.",
-                    descriptionEn: "Structured monthly support with solid methodologies to achieve real and measurable changes in organizational leadership.",
+                    description: "Transformación conductual con diagnóstico profundo, acompañamiento mensual estricto y medición de impacto final",
+                    descriptionEn: "Behavioral transformation driven by deep diagnostics, strict monthly coaching/advisory, and final impact measurement",
                     inclusions: [
-                        "Alineación estratégica con Dirección y stakeholders",
-                        "Evaluación de liderazgo (Hogan Insight & Configure)",
-                        "Contraste de competencias vs estrategia de negocio y perfil de puesto",
-                        "Reportes ejecutivos para el evaluado y Dirección General",
-                        "Sesiones de feedback y feedforward de alto nivel",
-                        "Plan de Desarrollo Individual (PDI) alineado a objetivos estratégicos",
-                        "Reportes ejecutivos para Dirección General",
-                        "Definición de conductas observables alineadas al negocio, traducidas en comportamientos medibles y formalizadas en una Carta Compromiso con cada directivo",
-                        "Evaluación 270° (inicio y cierre). Entrevistas a profundidad y encuestas",
-                        "Acompañamiento mensual con ajustes en tiempo real",
-                        "Matriz de evolución y desempeño (9-box). Entrega de informe final a Dirección General con matriz comparativa de crecimiento y desempeño"
+                        "Diagnóstico estratégico",
+                        "Retroalimentación",
+                        "Roadmap anual",
+                        "Matriz 9-Box",
+                        "Evaluación comparativa 270°",
+                        "Informes de evolución"
                     ],
                     inclusionsEn: [
-                        "Strategic alignment with Management and stakeholders",
-                        "Leadership assessment (Hogan Insight & Configure)",
-                        "Competency contrast vs business strategy and job profile",
-                        "Executive reports for the assessee and General Management",
-                        "High-level feedback and feedforward sessions",
-                        "Individual Development Plan (IDP) aligned to strategic objectives",
-                        "Executive reports for General Management",
-                        "Definition of observable behaviors aligned to the business, translated into measurable actions and formalized in a Commitment Letter with each director",
-                        "270° assessment (start and finish). In-depth interviews and surveys",
-                        "Monthly support with real-time adjustments",
-                        "Evolution and performance matrix (9-box). Delivery of final report to General Management with a comparative matrix of growth and performance"
+                        "Strategic diagnostic",
+                        "Feedback session",
+                        "Annual Roadmap",
+                        "9-Box Matrix",
+                        "270° Comparative Assessment",
+                        "Evolution reports"
                     ],
-                    result: "<strong>Evolución de conducta medible</strong>, respaldada con datos objetivos e informe final comparativo.",
-                    resultEn: "<strong>Measurable behavioral evolution</strong>, backed by objective data and comparative final report."
+                    result: "Cambio conductual, eliminación de silos de liderazgo, alineación cultural y estratégica y velocidad de ejecución efectiva",
+                    resultEn: "Sustained behavioral change, elimination of leadership silos, cultural and strategic alignment, and effective execution speed."
                 },
                 { 
                     id: "succession", 
-                    name: "Leadership Succession", 
+                    name: "Sucesión Blindada de Líderes", 
+                    nameEn: "Leadership Succession", //nombre en inglés
                     price: 60000,
                     tagline: "Aseguramiento del futuro corporativo y gobernanza",
                     taglineEn: "Securing corporate future and governance",
-                    description: "Identificación, mitigación de riesgos operativos y preparación metodológica para posiciones críticas o sucesión corporativa.",
-                    descriptionEn: "Identification, mitigation of operational risks, and methodological preparation for critical positions or corporate succession.",
+                    description: "Mapeo de potencial (Hogan) y madurez de sucesores. Desarrollo en doble vía (puesto actual y futuro) con seguimiento trimestral.",
+                    descriptionEn: "Mapping potential (Hogan) and readiness of successors. Dual-track development (current and future role) with quarterly progress tracking",
                     inclusions: [
-                        "Alineación estratégica de la posición crítica con stakeholders",
-                        "Evaluación de liderazgo (Hogan Insight & Configure) de participantes vs perfil requerido",
-                        "Matriz de readiness (Ready Now / Soon / Development)",
-                        "Identificación de riesgos bajo presión y descarriladores",
-                        "Feedback ejecutivo y plan de desarrollo",
-                        "Acompañamiento a los 3 meses, 6 meses y 1 año"
+                        "Matriz de Sucesión",
+                        "Perfil de potencial",
+                        "Dictamen de preparación",
+                        "Roadmap"
                     ],
                     inclusionsEn: [
-                        "Strategic alignment of the critical position with stakeholders",
-                        "Leadership assessment (Hogan Insight & Configure) of participants vs required profile",
-                        "Readiness matrix (Ready Now / Soon / Development)",
-                        "Identification of risks under pressure and derailers",
-                        "Executive feedback and development plan",
-                        "Support at 3 months, 6 months, and 1 year"
+                        "Succession Matrix",
+                        "Potential Profile",
+                        "Readiness Assessment",
+                        "Roadmap"
                     ],
-                    result: "Una <strong>Matriz de Sucesión clara</strong> y planes de desarrollo enfocados a mitigar riesgos de transición.",
-                    resultEn: "A <strong>clear Succession Matrix</strong> and development plans focused on mitigating transition risks."
+                    result: "Blindaje operativo y financiero ante la salida de perfiles clave; resultados desde el día uno del ascenso",
+                    resultEn: "Operational and financial safeguarding against the departure of key profiles; performance and results from day one of the promotion"
                 }
             ],
             talent_up: [
@@ -828,8 +1315,8 @@
 
         // Arreglo que contiene el estado dinámico de las vacantes activas (Máximo 5)
         let activeVacancies = [
-            { id: 1, name: "Gerente de Operaciones", type: "Gerencial", fee: 10, salary: 33500 },
-            { id: 2, name: "Consultor de TI Senior", type: "Operativa / IT", fee: 15, salary: 45000 }
+            { id: 1, name: "Gerente de Operaciones", type: "Headhunting", fee: 10, salary: 33500 },
+            { id: 2, name: "Consultor de TI Senior", type: "TI", fee: 15, salary: 45000 }
         ];
 
         // Elementos del DOM
@@ -877,24 +1364,41 @@
                 esBtn.className = "px-3.5 py-1.5 rounded-lg text-xs font-extrabold transition-all text-brand7 hover:bg-slate-200";
             }
             
-            // Forzar recálculo
+            toggleExecutiveExtraFields();
             calculateAll();
+        }
+
+        // Muestra/Oculta campos adicionales de contrato cuando se configuran detalles para EE.UU.
+        function toggleExecutiveExtraFields() {
+            const vertical = verticalTypeSelect.value;
+            const extraFields = document.getElementById('executiveExtraFields');
+            if (vertical === 'executive' && currentLanguage === 'en') {
+                extraFields.classList.remove('hidden');
+            } else {
+                extraFields.classList.add('hidden');
+            }
         }
 
         // Función para cambiar de vertical y actualizar catálogo
         function handleVerticalChange() {
             const vertical = verticalTypeSelect.value;
-            const products = productCatalog[vertical];
-            
+            const products = productCatalog[vertical]
             productTypeSelect.innerHTML = "";
+
+            // CORRECCIÓN DE SINTAXIS: El appendChild ahora está dentro del bucle
             if (products) {
                 products.forEach(p => {
                     const opt = document.createElement('option');
                     opt.value = p.id;
-                    opt.innerText = p.name;
-                    productTypeSelect.appendChild(opt);
+                    opt.innerText = (currentLanguage === 'en' && p.nameEn) ? p.nameEn : p.name;
+                    productTypeSelect.appendChild(opt); // <-- Ahora sí funciona
                 });
             }
+             // Ocultar todas las secciones primero
+                sectionExecutive.classList.add('hidden');
+                sectionLeadership.classList.add('hidden');
+                sectionTalentUp.classList.add('hidden');
+                document.getElementById('sectionPeopleUp').classList.add('hidden'); // Aseguramos que esté oculta
 
             if (vertical === 'executive') {
                 sectionExecutive.classList.remove('hidden');
@@ -904,6 +1408,7 @@
                 // Mostrar opciones de pago para Executive
                 paymentExecutiveContainer.classList.remove('hidden');
                 paymentLeadershipContainer.classList.add('hidden');
+
             } else if (vertical === 'leadership') {
                 sectionExecutive.classList.add('hidden');
                 sectionLeadership.classList.remove('hidden');
@@ -917,6 +1422,7 @@
                 
                 updateLeadershipPrice();
                 renderParticipantsNames();
+
             } else if (vertical === 'talent_up') {
                 sectionExecutive.classList.add('hidden');
                 sectionLeadership.classList.add('hidden');
@@ -925,13 +1431,22 @@
                 // Mostrar opciones de pago para Talent Up (Meses)
                 paymentExecutiveContainer.classList.add('hidden');
                 paymentLeadershipContainer.classList.remove('hidden');
-                
-                document.getElementById('monthsLabelText').innerText = currentLanguage === 'es' ? "Esquema de pagos (Cantidad de meses)" : "Payment Scheme (Number of months)";
-                
-                productTypeSelect.innerHTML = '<option value="talent_up">Talent Up</option>';
-            }
-            calculateAll();
+            
+            } else if (vertical === 'people_up_study') {
+                sectionExecutive.classList.add('hidden');
+                sectionLeadership.classList.add('hidden');
+                sectionTalentUp.classList.add('hidden');
+
+                // MOSTRAR LA NUEVA SECCIÓN
+                document.getElementById('sectionPeopleUp').classList.remove('hidden');
+                paymentExecutiveContainer.classList.add('hidden');
+                // Mostrar opciones de pago para Executive
+                paymentExecutiveContainer.classList.remove('hidden');
+                paymentLeadershipContainer.classList.add('hidden');
         }
+    
+    calculateAll();
+}
 
         // Obtener y cambiar precio de Liderazgo al elegir el programa
         function updateLeadershipPrice() {
@@ -961,8 +1476,12 @@
                             <input type="text" value="${v.name}" oninput="updateVacancyData(${v.id}, 'name', this.value)" class="w-full px-2.5 py-1.5 bg-white border border-brand5 rounded-lg text-xs font-semibold text-brand7">
                         </div>
                         <div>
-                            <label class="block text-[10px] uppercase font-bold text-brand7/60 mb-1">Tipo de Vacante</label>
-                            <input type="text" value="${v.type}" oninput="updateVacancyData(${v.id}, 'type', this.value)" class="w-full px-2.5 py-1.5 bg-white border border-brand5 rounded-lg text-xs text-brand7">
+                            <label class="block text-[10px] uppercase font-bold text-brand7/60 mb-1">Tipo de Servicio</label>
+                            <select onchange="updateVacancyData(${v.id}, 'type', this.value)" class="w-full px-2.5 py-1.5 bg-white border border-brand5 rounded-lg text-xs font-semibold text-brand7 focus:outline-none focus:ring-2 focus:ring-brand3/50">
+                                <option value="Tradicional" ${v.type === 'Tradicional' ? 'selected' : ''}>Tradicional</option>
+                                <option value="Headhunting" ${v.type === 'Headhunting' ? 'selected' : ''}>Headhunting</option>
+                                <option value="TI" ${v.type === 'TI' ? 'selected' : ''}>TI</option>
+                            </select>
                         </div>
                         <div>
                             <label class="block text-[10px] uppercase font-bold text-brand7/60 mb-1">Fee Registrado (%)</label>
@@ -994,7 +1513,7 @@
                 activeVacancies.push({
                     id: nextId,
                     name: "Nueva Posición",
-                    type: "Clave / Comercial",
+                    type: "Tradicional",
                     fee: 10,
                     salary: 20000
                 });
@@ -1043,9 +1562,13 @@
 
             if (vertical === 'executive') {
                 // Cálculo para cada una de las vacantes activas
+                const usePartnerRate = (currentLanguage === 'en');
+                const partnerRate = usePartnerRate ? (parseFloat(document.getElementById('partnerRateInput').value) || 15) : null;
+
                 activeVacancies.forEach(v => {
                     const annualSalary = v.salary * 12;
-                    const vacancySubtotal = annualSalary * (v.fee / 100);
+                    const feeToUse = usePartnerRate ? partnerRate : v.fee;
+                    const vacancySubtotal = annualSalary * (feeToUse / 100);
                     subtotal += vacancySubtotal;
 
                     // Agregar concepto a la vista digital
@@ -1054,13 +1577,14 @@
                     cDiv.innerHTML = `
                         <div>
                             <span class="font-extrabold text-brand3 text-sm block">${v.name}</span>
-                            <span class="text-[10px] text-brand7/60">Anualizado: ${mxnFormatter.format(annualSalary)} | Fee: ${v.fee}%</span>
+                            <span class="text-[10px] text-brand7/60">${currentLanguage === 'es' ? 'Anualizado' : 'Annualized'}: ${mxnFormatter.format(annualSalary)} | Fee: ${feeToUse}%</span>
                         </div>
                         <span class="font-black text-brand7 text-sm">${mxnFormatter.format(vacancySubtotal)}</span>
                     `;
                     digitalConceptList.appendChild(cDiv);
                 });
             } else if (vertical === 'leadership') {
+                
                 // Cálculo para Leadership
                 const productVal = productTypeSelect.value;
                 const program = productCatalog.leadership.find(p => p.id === productVal);
@@ -1072,9 +1596,11 @@
                     // Concepto visual
                     const cDiv = document.createElement('div');
                     cDiv.className = "flex justify-between items-center text-xs p-4 bg-brand5/10 rounded-xl border border-brand5/50";
+                    const displayName = (currentLanguage === 'en' && program.nameEn) ? program.nameEn : program.name;
+
                     cDiv.innerHTML = `
                         <div>
-                            <span class="font-extrabold text-brand3 text-sm block">${program.name}</span>
+                            <span class="font-extrabold text-brand3 text-sm block">${displayName}</span>
                             <span class="text-[10px] text-brand7/60">Costo Unitario: ${mxnFormatter.format(program.price)} | Cantidad: ${participantsQty} pax</span>
                         </div>
                         <span class="font-black text-brand7 text-sm">${mxnFormatter.format(subtotal)}</span>
@@ -1097,7 +1623,27 @@
                     <span class="font-black text-brand7 text-sm">${mxnFormatter.format(subtotal)}</span>
                 `;
                     digitalConceptList.appendChild(cDiv);
-            }
+                    
+            } else if (vertical === 'people_up_study') {
+                const selector = document.getElementById('peopleUpRange');
+                const selectedOption = selector.options[selector.selectedIndex];
+                const price = parseFloat(selectedOption.getAttribute('data-price')) || 0;
+                const rangeText = selectedOption.text;
+
+                subtotal = price;
+
+                // Inyectar concepto en el resumen digital de la derecha
+                const cDiv = document.createElement('div');
+                cDiv.className = "flex justify-between items-center text-xs p-4 bg-brand5/10 rounded-xl border border-brand5/50";
+                cDiv.innerHTML = `
+                    <div>
+                        <span class="font-extrabold text-brand3 text-sm block">People Up Study</span>
+                        <span class="text-[10px] text-brand7/60">Rango: ${rangeText.split('(')}</span>
+                    </div>
+                    <span class="font-black text-brand7 text-sm">${mxnFormatter.format(subtotal)}</span>
+                `;
+                    digitalConceptList.appendChild(cDiv);
+                }
 
             // Cálculos Finales de Impuesto
             const iva = subtotal * 0.16;
@@ -1109,7 +1655,7 @@
             digitalTotal.innerText = mxnFormatter.format(total);
 
             // Regla de Esquema de Pagos para la interfaz interactiva
-            if (vertical === 'executive') {
+            if (vertical === 'executive' || vertical === 'people_up_study') {
                 const execScheme = executivePaymentScheme.value;
                 if (execScheme === 'split') {
                     const pct1 = parseFloat(document.getElementById('executiveFirstPaymentPct').value) || 50;
@@ -1124,7 +1670,8 @@
                     digitalInstallmentSection.classList.add('hidden');
                 }
             } else {
-                // Leadership y Talent Up: Mensualidades del proyecto
+                
+                // Leadership y Talent Up: Medidas mensuales
                 const selectedMonths = parseInt(paymentMonthsInput.value) || 1;
                 if (selectedMonths > 1) {
                     const monthlyTotalVal = total / selectedMonths;
@@ -1135,6 +1682,111 @@
                 } else {
                     digitalInstallmentSection.classList.add('hidden');
                 }
+            }
+        }
+
+        // PREPARAR E INYECTAR DATOS DE LA CARTA DE MANDATO EN INGLÉS (PROCESO EXCLUSIVO)
+        function buildEngagementLetterPrint() {
+            const clientNameVal = document.getElementById('clientName').value;
+            const clientContactVal = document.getElementById('clientContact').value;
+            const clientLocationVal = document.getElementById('clientLocation').value;
+            const clientCountryVal = document.getElementById('clientCountry').value;
+            const clientEmailVal = document.getElementById('clientEmail').value;
+            const hiringManagerVal = document.getElementById('hiringManager').value;
+            const departmentVal = document.getElementById('department').value;
+            const roleLocationVal = document.getElementById('roleLocation').value;
+            const targetStartDateVal = document.getElementById('targetStartDate').value;
+            const kickoffDateVal = document.getElementById('kickoffDate').value;
+            const signerName = document.getElementById('proposalSigner').value;
+
+            // Población de la primera página impresiones
+            document.getElementById('pClientLegalName').innerText = clientNameVal;
+            document.getElementById('pClientContact').innerText = clientContactVal;
+            document.getElementById('pClientEmail').innerText = clientEmailVal;
+            document.getElementById('pClientLocation').innerText = clientLocationVal;
+            document.getElementById('pClientCountry').innerText = clientCountryVal;
+
+            // Títulos de Puestos concatenados
+            const positionNames = activeVacancies.map(v => v.name).join(' / ');
+            document.getElementById('pPositionTitle').innerText = positionNames;
+            document.getElementById('pRoleLocation').innerText = roleLocationVal;
+            document.getElementById('pHiringManager').innerText = hiringManagerVal;
+            document.getElementById('pDepartment').innerText = departmentVal;
+            document.getElementById('pTargetStartDate').innerText = targetStartDateVal;
+            document.getElementById('pKickoffDate').innerText = kickoffDateVal;
+
+            // Página 2 Cálculos y Desglose Financiero en USD
+            let totalAnnualComp = 0;
+            let totalSubtotal = 0;
+            const partnerRate = parseFloat(document.getElementById('partnerRateInput').value) || 15;
+
+            activeVacancies.forEach(v => {
+                const annualSalary = v.salary * 12;
+                totalAnnualComp += annualSalary;
+                totalSubtotal += annualSalary * (partnerRate / 100);
+            });
+
+            // Actualizar tabla financiera en USD para EE.UU.
+            document.getElementById('pAnnualComp').innerText = mxnFormatter.format(totalAnnualComp).replace('MXN', 'USD');
+            document.getElementById('pStandardRate').innerText = "20%"; // Standard 20%
+            document.getElementById('pDiscountedRate').innerText = partnerRate + "%";
+            document.getElementById('pTotalPlacementFee').innerText = mxnFormatter.format(totalSubtotal).replace('MXN', 'USD');
+
+            // Plazos y Amortización
+            const execScheme = executivePaymentScheme.value;
+            let pct1 = 50;
+            if (execScheme === 'split') {
+                pct1 = parseFloat(document.getElementById('executiveFirstPaymentPct').value) || 50;
+            } else {
+                pct1 = 100;
+            }
+            const pct2 = 100 - pct1;
+
+            const val1 = totalSubtotal * (pct1 / 100);
+            const val2 = totalSubtotal * (pct2 / 100);
+
+            document.getElementById('pFirstPayPctLabel').innerText = pct1;
+            document.getElementById('pSecondPayPctLabel').innerText = pct2;
+            document.getElementById('pUpfrontPayment').innerText = mxnFormatter.format(val1).replace('MXN', 'USD');
+            document.getElementById('pBalanceAtHire').innerText = mxnFormatter.format(val2).replace('MXN', 'USD');
+
+            // Grid Dinámico de Totales
+            document.getElementById('pGridTotal').innerText = `USD [${mxnFormatter.format(totalSubtotal).replace('MXN', 'USD')}]`;
+            document.getElementById('pGridUpfront').innerText = `USD [${mxnFormatter.format(val1).replace('MXN', 'USD')}]`;
+            document.getElementById('pGridBalance').innerText = `USD [${mxnFormatter.format(val2).replace('MXN', 'USD')}]`;
+            document.getElementById('pGridFirstPayPct').innerText = pct1;
+            document.getElementById('pGridSecondPayPct').innerText = pct2;
+
+            // Cláusulas de texto dinámicas
+            document.getElementById('pKeyPaymentPct1').innerText = pct1;
+            document.getElementById('pKeyPaymentPct2').innerText = pct2;
+
+            // Página 3 firmas
+            document.getElementById('sigClientLegalName').innerText = clientNameVal;
+            document.getElementById('sigClientContact').innerText = clientContactVal;
+            document.getElementById('sigSignerName').innerText = signerName;
+            
+            const t = translations[currentLanguage];
+            document.getElementById('sigSignerTitle').innerText = t.titleDirector;
+
+            const today = new Date();
+            const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('sigDate').innerText = today.toLocaleDateString('en-US', dateOptions);
+
+            // Manejo dinámico de imagen de firma con fallback
+            const sigImgEng = document.getElementById('printP3SignatureImgEng');
+            const sigFallbackEng = document.getElementById('printP3SignatureFallbackEng');
+            
+            sigImgEng.style.display = 'block';
+            sigImgEng.classList.remove('hidden');
+            sigFallbackEng.classList.add('hidden');
+
+            if (signerName === 'Carla Muñoz de Cote') {
+                sigImgEng.src = 'Firma_carla.png';
+                sigImgEng.alt = 'Firma Carla Muñoz de Cote';
+            } else if (signerName === 'Paola Galicia') {
+                sigImgEng.src = 'Firma_Paola.png';
+                sigImgEng.alt = 'Firma Paola Galicia';
             }
         }
 
@@ -1177,9 +1829,18 @@
             // Traducir Hoja 3 (Términos)
             document.getElementById('printP3TitleHeader').innerText = currentLanguage === 'es' ? "Compromiso de Servicio" : "Service Commitment";
             document.getElementById('printP3SectionLabel').innerText = t.termSection;
-            document.getElementById('printP3GuaranteeTitle').innerText = t.guaranteeTitle;
-            document.getElementById('printP3GuaranteeText').innerHTML = t.guaranteeText;
-            document.getElementById('printP3ClosingText').innerText = t.footerClosing;
+            
+            // Lógica condicional para la Garantía e Información Importante de la tercera página
+            if (vertical === 'executive') {
+                document.getElementById('printP3GuaranteeTitle').innerText = t.guaranteeTitleExecutive;
+                document.getElementById('printP3GuaranteeText').innerHTML = t.guaranteeTextExecutive;
+                document.getElementById('printP3ClosingText').innerHTML = t.footerClosingExecutive;
+            } else {
+                document.getElementById('printP3GuaranteeTitle').innerText = t.guaranteeTitle;
+                document.getElementById('printP3GuaranteeText').innerHTML = t.guaranteeText;
+                document.getElementById('printP3ClosingText').innerHTML = t.footerClosing;
+            }
+            
             document.getElementById('printP3AcceptanceLabel').innerText = t.acceptanceLabel;
             document.getElementById('printP3SignatureValidation').innerText = t.signatureValidation;
             document.getElementById('printP3CompanyName').innerText = t.companyName;
@@ -1213,16 +1874,16 @@
                 printParticipantsListContainer.classList.add('hidden');
                 printInclusionsContainer.classList.add('hidden');
 
-                // Armar tabla de vacantes para impresión
+                // Armar tabla de vacantes para impresión con las nuevas columnas especificadas
                 let tableHTML = `
                     <table class="w-full text-left text-xs whitespace-nowrap">
                         <thead>
                             <tr class="bg-brand3 text-white font-extrabold uppercase tracking-wide">
                                 <th class="px-4 py-3">${t.vacanciesHeaders.name}</th>
-                                <th class="px-4 py-3">${t.vacanciesHeaders.profile}</th>
-                                <th class="px-4 py-3 text-right">${t.vacanciesHeaders.salary}</th>
-                                <th class="px-4 py-3 text-center">${t.vacanciesHeaders.fee}</th>
-                                <th class="px-4 py-3 text-right">${t.vacanciesHeaders.cost}</th>
+                                <th class="px-4 py-3">${t.vacanciesHeaders.service}</th>
+                                <th class="px-4 py-3 text-right">${t.vacanciesHeaders.salaryMonthly}</th>
+                                <th class="px-4 py-3 text-right">${t.vacanciesHeaders.salaryAnnual}</th>
+                                <th class="px-4 py-3 text-right">${t.vacanciesHeaders.investment}</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-100 font-medium text-brand7">
@@ -1237,9 +1898,9 @@
                         <tr class="bg-white">
                             <td class="px-4 py-3 font-bold text-brand3">${v.name}</td>
                             <td class="px-4 py-3">${v.type}</td>
-                            <td class="px-4 py-3 text-right">${mxnFormatter.format(v.salary)}/mes</td>
-                            <td class="px-4 py-3 text-center font-bold">${v.fee}%</td>
-                            <td class="px-4 py-3 text-right font-extrabold text-slate-900">${mxnFormatter.format(valCost)}</td>
+                            <td class="px-4 py-3 text-right">${mxnFormatter.format(v.salary)}</td>
+                            <td class="px-4 py-3 text-right">${mxnFormatter.format(annualSalary)}</td>
+                            <td class="px-4 py-3 text-right font-extrabold text-slate-900">${mxnFormatter.format(valCost)} <span class="text-[9px] font-normal text-brand7/60">(${v.fee}%)</span></td>
                         </tr>
                     `;
                 });
@@ -1250,8 +1911,9 @@
             } else if (vertical === 'leadership') {
                 // Flujo Leadership
                 const program = productCatalog.leadership.find(p => p.id === productVal);
+                document.getElementById('inclusionProgramTitle').innerText = currentLanguage === 'es' ? program.name : (program.nameEn || program.name);
                 document.getElementById('printPropType').innerText = t.propTitleLeadership;
-                
+
                 const participantsQty = parseInt(qtyParticipantsInput.value) || 0;
                 subtotal = program ? (program.price * participantsQty) : 0;
 
@@ -1336,7 +1998,9 @@
                         </thead>
                         <tbody class="divide-y divide-slate-100 font-medium text-brand7">
                             <tr class="bg-white">
-                                <td class="px-4 py-3 font-bold text-brand3 text-sm">${program ? program.name : ''}</td>
+                                <td class="px-4 py-3 font-bold text-brand3 text-sm">
+                                    ${(currentLanguage === 'en' && program.nameEn) ? program.nameEn : (program ? program.name : '')}
+                                </td>
                                 <td class="px-4 py-3 text-right font-semibold">${mxnFormatter.format(program ? program.price : 0)}</td>
                                 <td class="px-4 py-3 text-center font-extrabold">${participantsQty}</td>
                                 <td class="px-4 py-3 text-right font-black text-slate-900 text-sm">${mxnFormatter.format(subtotal)}</td>
@@ -1393,6 +2057,85 @@
                     </table>
                 `;
                 tableContainer.innerHTML = tableHTML;
+
+            } else if (vertical === 'people_up_study') {
+                // 1. Configuración de Títulos y Visibilidad
+                document.getElementById('printPropType').innerText = "PEOPLE UP";
+                printParticipantsListContainer.classList.add('hidden'); // No aplica lista de nombres individual
+                printInclusionsContainer.classList.remove('hidden'); [5]
+
+                // 2. Obtención de datos del cotizador
+                const sel = document.getElementById('peopleUpRange'); [6]
+                const selectedOpt = sel.options[sel.selectedIndex];
+                const rangeText = selectedOpt.text.split(' ('); // Extrae "1 - 50 colaboradores"
+                const investment = parseFloat(selectedOpt.getAttribute('data-price')) || 0;
+                subtotal = investment;
+                const ivaValue = subtotal * 0.16;
+                const totalValue = subtotal + ivaValue;
+
+                // 3. Renderizado de Tabla de Inversión (Página 2)
+                let tableHTML = `
+                    <table class="w-full text-left text-xs">
+                        <thead>
+                            <tr class="bg-brand3 text-white font-extrabold uppercase tracking-wide">
+                                <th class="px-4 py-3">Concepto</th>
+                                <th class="px-4 py-3">Detalle</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 font-medium text-brand7">
+                            <tr class="bg-white">
+                                <td class="px-4 py-3 font-bold text-brand3">Servicio</td>
+                                <td class="px-4 py-3">People Up – Diagnóstico de Clima Laboral y Compromiso Organizacional</td>
+                            </tr>
+                            <tr class="bg-slate-50">
+                                <td class="px-4 py-3 font-bold text-brand3">Rango considerado</td>
+                                <td class="px-4 py-3">${rangeText}</td>
+                            </tr>
+                        </tbody>
+                    </table>`;
+                tableContainer.innerHTML = tableHTML; [5]
+
+                // 4. Renderizado de Inclusiones (Página 2)
+                document.getElementById('inclusionProgramTitle').innerText = "DETALLE DEL SERVICIO"; [7]
+                document.getElementById('inclusionProgramTagline').innerText = "Metodología People Up®";
+                document.getElementById('inclusionProgramDescription').innerText = "La presente propuesta presenta la inversión estimada considerando el rango de colaboradores reportado."; [8]
+    
+                const inclusions = [
+                    "Aplicación digital a colaboradores", "Dashboard interactivo con resultados segmentados",
+                    "Análisis de eNPS (Employee Net Promoter Score)", "Identificación de motivadores y factores de permanencia",
+                    "Recomendaciones estratégicas y plan de acción", "Presentación ejecutiva de resultados",
+                    "Sesión de resultados con Dirección General y Recursos Humanos", "Presentación de resultados a los colaboradores (opcional)"
+                ];
+    
+                const bulletsUl = document.getElementById('inclusionBulletList'); [9]
+                bulletsUl.innerHTML = inclusions.map(inc => `<li class="py-0.5"><strong>✓ ${inc}</strong></li>`).join('');
+
+                // 5. Forma de Pago (Actualización automática de etiquetas en el resumen inferior)
+                //const halfTotal = totalValue / 2;
+                //document.getElementById('printInstallmentContainer').classList.remove('hidden'); [10]
+                //document.getElementById('printInstallmentLabel').innerText = "FORMA DE PAGO:";
+                //document.getElementById('printInstallmentValue').innerText = `Anticipo (50%): ${mxnFormatter.format(halfTotal)} | Pago final (50%): ${mxnFormatter.format(halfTotal)}`;
+                
+                // 6. Términos y Condiciones (Página 3)
+                document.getElementById('printP3GuaranteeTitle').innerText = "INFORMACIÓN IMPORTANTE"; [11]
+                document.getElementById('printP3GuaranteeText').innerHTML = `
+                    <div class="space-y-4 text-xs">
+                        <div>
+                            <strong class="text-brand3 uppercase">Alcance</strong>
+                            <ul class="list-disc pl-4 mt-1">
+                                <li>La propuesta considera el rango reportado al momento de cotizar.</li>
+                                <li>Si los participantes exceden el rango, la inversión se ajustará a la lista de precios vigente.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <strong class="text-brand3 uppercase">Confidencialidad</strong>
+                            <p class="mt-1">Información tratada con estricta confidencialidad. Resultados agregados y anónimos.</p>
+                        </div>
+                        <div>
+                            <strong class="text-brand3 uppercase">Cancelaciones</strong>
+                            <p class="mt-1">Antes del inicio: sin cargo. Iniciado el proyecto: cargo del 30% del valor total.</p>
+                        </div>
+                    </div>`; [12]
             }
 
             // Inyectar cálculos de Impuesto y totales
@@ -1411,7 +2154,7 @@
 
             // Inyectar mensualidades / condiciones en la hoja de impresión
             const printInstallmentContainer = document.getElementById('printInstallmentContainer');
-            if (vertical === 'executive') {
+            if (vertical === 'executive' || vertical === 'people_up_study') {
                 const execScheme = executivePaymentScheme.value;
                 if (execScheme === 'split') {
                     const pct1 = parseFloat(document.getElementById('executiveFirstPaymentPct').value) || 50;
@@ -1445,7 +2188,23 @@
 
         // Desencadenador de la Impresión Física
         function triggerPrint() {
-            buildAndInjectPrintContent();
+            const vertical = verticalTypeSelect.value;
+            const printStandard = document.getElementById('print-area-standard');
+            const printEngagement = document.getElementById('print-area-engagement');
+
+            if (vertical === 'executive' && currentLanguage === 'en') {
+                printStandard.classList.add('hidden');
+                printStandard.classList.remove('print-area');
+                printEngagement.classList.remove('hidden');
+                printEngagement.classList.add('print-area');
+                buildEngagementLetterPrint();
+            } else {
+                printEngagement.classList.add('hidden');
+                printEngagement.classList.remove('print-area');
+                printStandard.classList.remove('hidden');
+                printStandard.classList.add('print-area');
+                buildAndInjectPrintContent();
+            }
             window.print();
         }
 
@@ -1498,6 +2257,7 @@
 
         document.getElementById('proposalSigner').addEventListener('change', calculateAll);
         document.getElementById('talentUpValue').addEventListener('input', calculateAll);
+        document.getElementById('partnerRateInput').addEventListener('input', calculateAll);
 
         // Inicialización del simulador al arranque
         window.onload = function() {
